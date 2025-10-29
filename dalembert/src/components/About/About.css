@@ -1,0 +1,241 @@
+.about-section {
+  max-width: 70rem;
+  margin: auto;
+  padding: 4rem 2rem;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.about-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Efecto de tarjeta que gira */
+.flip-card {
+  perspective: 1000px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 18rem;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 22rem;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-front {
+  background: linear-gradient(135deg, var(--card), var(--card-dark));
+  border: 0.25rem solid var(--accent);
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, var(--accent), #00ff88);
+  color: white;
+  transform: rotateY(180deg);
+  padding: 1.5rem;
+}
+
+.about-image {
+  width: 85%;
+  height: auto;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  filter: grayscale(20%);
+}
+
+.flip-card:hover .about-image {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+/* Información personal */
+.personal-info {
+  text-align: center;
+  width: 100%;
+}
+
+.personal-info h3 {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0.8rem;
+  padding: 0.3rem 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.info-item .icon {
+  font-size: 1.1rem;
+  margin-right: 0.7rem;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.info-item span:last-child {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Indicadores de clic */
+.click-hint {
+  position: absolute;
+  bottom: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  animation: pulse 2s infinite;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.interaction-hint {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--accent), #00ff88);
+  color: white;
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: 500;
+  animation: glow 3s infinite;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0.5rem rgba(76, 175, 80, 0.5); }
+  50% { box-shadow: 0 0 1rem rgba(76, 175, 80, 0.8); }
+}
+
+.about-text {
+  text-align: left;
+  line-height: 1.7;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 0;
+  background: linear-gradient(135deg, var(--card), var(--card-dark));
+  padding: 2rem;
+  border-radius: 1rem;
+  border-left: 0.25rem solid var(--accent);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 64rem) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .about-text {
+    text-align: center;
+  }
+  
+  .flip-card {
+    max-width: 16rem;
+  }
+  
+  .flip-card-inner {
+    height: 20rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .about-section {
+    padding: 3rem 1.5rem;
+  }
+  
+  .about-text p {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .flip-card {
+    max-width: 14rem;
+  }
+  
+  .flip-card-inner {
+    height: 18rem;
+  }
+  
+  .personal-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .info-item {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .about-section {
+    padding: 2rem 1rem;
+  }
+  
+  .about-content {
+    gap: 1.5rem;
+  }
+  
+  .about-text p {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .flip-card {
+    max-width: 12rem;
+  }
+  
+  .flip-card-inner {
+    height: 16rem;
+  }
+  
+  .click-hint {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
