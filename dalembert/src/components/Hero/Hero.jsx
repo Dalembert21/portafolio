@@ -8,13 +8,17 @@ export default function Hero({ lang }) {
       hi: "👋 Hi, I'm",
       name: "Dalembert Bravo",
       role: "Full-Stack Developer",
-      desc: "Building efficient and elegant solutions using modern web technologies."
+      desc: "Building efficient and elegant solutions using modern web technologies.",
+      downloadCV: "Download CV",
+      viewGithub: "View GitHub"
     },
     es: {
       hi: "👋 ¡Hola, soy",
       name: "Dalembert Bravo",
       role: "Desarrollador Full-Stack",
-      desc: "Construyendo soluciones eficientes y elegantes con tecnologías modernas."
+      desc: "Construyendo soluciones eficientes y elegantes con tecnologías modernas.",
+      downloadCV: "Descargar CV",
+      viewGithub: "Ver GitHub"
     }
   };
 
@@ -35,6 +39,30 @@ export default function Hero({ lang }) {
         {text[lang].role}
       </motion.h3>
       <p>{text[lang].desc}</p>
+      
+      {/* Botones de acción */}
+      <motion.div 
+        className="hero-buttons"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8 }}
+      >
+        <a 
+          href="/cv.pdf" 
+          download 
+          className="btn btn-primary"
+        >
+          📄 {text[lang].downloadCV}
+        </a>
+        <a 
+          href="https://github.com/Dalembert21" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="btn btn-secondary"
+        >
+          💻 {text[lang].viewGithub}
+        </a>
+      </motion.div>
     </section>
   );
 }

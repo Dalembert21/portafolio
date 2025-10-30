@@ -1,16 +1,45 @@
-.skills-section {
+.technologies-section {
   text-align: center;
   padding: 4rem 2rem;
 }
 
-.skills-grid {
+.technologies-categories {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--accent);
+  background: transparent;
+  color: var(--text);
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.category-btn.active,
+.category-btn:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.technologies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   gap: 1.2rem;
   margin-top: 2rem;
 }
 
-.skill-card {
+.tech-card {
   background: linear-gradient(145deg, var(--card), var(--card-dark));
   border-radius: 1rem;
   padding: 1.2rem 0.8rem;
@@ -27,25 +56,25 @@
   overflow: hidden;
 }
 
-.skill-card:hover {
+.tech-card:hover {
   transform: translateY(-0.3rem);
   border: 2px solid var(--accent);
   box-shadow: 0 0.5rem 1.5rem rgba(76, 175, 80, 0.2);
 }
 
-.skill-card.active {
+.tech-card.active {
   background: linear-gradient(145deg, var(--accent), #00ff88);
   border: 2px solid var(--accent);
   transform: scale(1.05);
   z-index: 10;
 }
 
-.skill-card.active h3 {
+.tech-card.active h3 {
   color: white;
   font-weight: 600;
 }
 
-/* ÍCONOS - SOLUCIÓN DEFINITIVA */
+/* ÍCONOS LOCALES - TAMAÑO CONSISTENTE PARA TODOS */
 .tool-icon {
   width: 3rem;
   height: 3rem;
@@ -54,24 +83,43 @@
   object-fit: contain;
 }
 
-/* Estado normal */
-.skill-card .tool-icon {
-  filter: grayscale(0%);
+/* ELIMINAR TAMAÑOS ESPECÍFICOS - TODOS LOS ICONOS SERÁN IGUALES */
+.tool-icon[src*="penpot"],
+.tool-icon[src*="android-studio"],
+.tool-icon[src*="server"],
+.tool-icon[src*="adobe-xd"] {
+  width: 3rem !important;
+  height: 3rem !important;
+  margin-bottom: 0.7rem;
 }
 
-/* Estado hover */
-.skill-card:hover .tool-icon {
+.tech-card:hover .tool-icon {
   transform: scale(1.1);
-  filter: grayscale(0%) brightness(1.1);
 }
 
-/* Estado activo - ÍCONO BLANCO SOBRE FONDO VERDE */
-.skill-card.active .tool-icon {
-  filter: brightness(0) invert(1);
+.tech-card.active .tool-icon {
   transform: scale(1.2);
+  filter: brightness(1.1) contrast(1.1);
 }
 
-.skill-card h3 {
+/* ELIMINAR AJUSTES ESPECÍFICOS PARA CARDS CON ICONOS GRANDES */
+/* Todos los cards tendrán la misma altura */
+
+.tool-fallback {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 0.7rem;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.tech-card h3 {
   color: var(--accent);
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
@@ -80,7 +128,7 @@
   text-align: center;
 }
 
-.skill-card p {
+.tech-card p {
   font-size: 0.75rem;
   line-height: 1.4;
   opacity: 0;
@@ -92,34 +140,45 @@
   margin: 0;
 }
 
-.skill-card.active p {
+.tech-card.active p {
   opacity: 1;
   max-height: 5rem;
   margin-top: 0.5rem;
 }
 
 /* Mejorar visibilidad en tema claro */
-.light .skill-card {
+.light .tech-card {
   border: 2px solid rgba(0, 0, 0, 0.1);
   background: linear-gradient(145deg, #ffffff, #f8fafc);
 }
 
-.light .skill-card:hover {
+.light .tech-card:hover {
   border: 2px solid var(--accent);
 }
 
-.light .skill-card.active {
+.light .tech-card.active {
   background: linear-gradient(145deg, var(--accent), #00cc6a);
 }
 
-/* Responsive */
+/* Responsive general */
+@media (max-width: 64rem) {
+  .technologies-categories {
+    gap: 0.6rem;
+  }
+  
+  .category-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
 @media (max-width: 48rem) {
-  .skills-grid {
+  .technologies-grid {
     grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
     gap: 1rem;
   }
   
-  .skill-card {
+  .tech-card {
     min-height: 7rem;
     padding: 1rem 0.5rem;
   }
@@ -130,18 +189,27 @@
     margin-bottom: 0.5rem;
   }
   
-  .skill-card h3 {
+  .tech-card h3 {
+    font-size: 0.8rem;
+  }
+
+  .technologies-categories {
+    gap: 0.4rem;
+  }
+  
+  .category-btn {
+    padding: 0.5rem 0.8rem;
     font-size: 0.8rem;
   }
 }
 
 @media (max-width: 30rem) {
-  .skills-grid {
+  .technologies-grid {
     grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
     gap: 0.8rem;
   }
   
-  .skill-card {
+  .tech-card {
     min-height: 6rem;
     padding: 0.8rem 0.4rem;
   }
@@ -149,5 +217,14 @@
   .tool-icon {
     width: 2rem;
     height: 2rem;
+  }
+
+  .technologies-categories {
+    gap: 0.3rem;
+  }
+  
+  .category-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
   }
 }

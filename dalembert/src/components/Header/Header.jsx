@@ -6,15 +6,15 @@ import logoImg from "../../assets/logo.jpg";
 
 export default function Header({ toggleTheme, toggleLang, lang, darkMode }) {
   const sections = {
-    en: ["About", "Skills", "Projects", "Contact"],
-    es: ["About", "Skills", "Projects", "Contact"] // Mantener IDs en inglés
+    en: ["About", "Technologies", "Complements", "Projects", "Contact"], 
+    es: ["About", "Technologies", "Complements", "Projects", "Contact"] 
   };
 
   const sectionNames = {
-    en: ["About", "Skills", "Projects", "Contact"],
-    es: ["Sobre mí", "Habilidades", "Proyectos", "Contacto"]
+    en: ["About", "Technologies", "Soft Skills", "Projects", "Contact"], 
+    es: ["Sobre mí", "Tecnologías", "Habilidades Blandas", "Proyectos", "Contacto"] 
   };
-
+  
   return (
     <motion.header 
       initial={{ y: -60, opacity: 0 }}

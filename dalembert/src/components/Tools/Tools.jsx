@@ -6,7 +6,7 @@ export default function Tools({ lang }) {
     {
       name: "Git & GitHub",
       info: {
-        es: "Control de versiones y colaboración en proyectos.",
+        es: "Controlddd de versiones y colaboración en proyectos.",
         en: "Version control and project collaboration."
       }
     },
