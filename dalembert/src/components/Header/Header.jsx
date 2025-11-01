@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { motion } from "framer-motion";
 import logoImg from "../../assets/logo.jpg"; 
 
 export default function Header({ toggleTheme, toggleLang, lang, darkMode }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const sections = {
-    en: ["About", "Technologies", "Complements", "Projects", "Contact"], 
-    es: ["About", "Technologies", "Complements", "Projects", "Contact"] 
+    en: ["about", "technologies", "complements", "projects", "contact"], 
+    es: ["about", "technologies", "complements", "projects", "contact"] 
   };
 
   const sectionNames = {
     en: ["About", "Technologies", "Soft Skills", "Projects", "Contact"], 
     es: ["Sobre mí", "Tecnologías", "Habilidades Blandas", "Proyectos", "Contacto"] 
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const handleNavClick = (sectionId) => {
+    closeMenu();
+    // Scroll suave a la sección
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
   
   return (
@@ -29,14 +48,32 @@ export default function Header({ toggleTheme, toggleLang, lang, darkMode }) {
           className="logo-img"
           animate={{ rotate: [0, 10, -10, 0] }}
           transition={{ duration: 2, repeat: Infinity, repeatDelay: 6 }}
+          onClick={() => handleNavClick('hero')}
         />
       </div>
 
-      <nav>
+      {/* Botón hamburguesa para móviles */}
+      <button 
+        className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav className={isMenuOpen ? 'active' : ''}>
         <ul className="nav-links">
           {sections[lang].map((item, i) => (
             <li key={i}>
-              <a href={`#${item.toLowerCase()}`}>
+              <a 
+                href={`#${item}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item);
+                }}
+              >
                 {sectionNames[lang][i]}
               </a>
             </li>
@@ -45,10 +82,10 @@ export default function Header({ toggleTheme, toggleLang, lang, darkMode }) {
       </nav>
 
       <div className="icons">
-        <button onClick={toggleTheme} className="icon-btn">
+        <button onClick={toggleTheme} className="icon-btn" aria-label="Toggle theme">
           {darkMode ? <FaSun /> : <FaMoon />}
         </button>
-        <button onClick={toggleLang} className="lang-btn">
+        <button onClick={toggleLang} className="lang-btn" aria-label="Toggle language">
           {lang.toUpperCase()}
         </button>
       </div>

@@ -48,7 +48,7 @@ export default function Hero({ lang }) {
         transition={{ delay: 0.8 }}
       >
         <a 
-          href="/cv.pdf" 
+          href="/Dalembert Bravo.pdf" 
           download 
           className="btn btn-primary"
         >
