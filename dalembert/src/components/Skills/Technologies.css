@@ -1,0 +1,230 @@
+.technologies-section {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.technologies-categories {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--accent);
+  background: transparent;
+  color: var(--text);
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.category-btn.active,
+.category-btn:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.technologies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.tech-card {
+  background: linear-gradient(145deg, var(--card), var(--card-dark));
+  border-radius: 1rem;
+  padding: 1.2rem 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(76, 175, 80, 0.2);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-card:hover {
+  transform: translateY(-0.3rem);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0.5rem 1.5rem rgba(76, 175, 80, 0.2);
+}
+
+.tech-card.active {
+  background: linear-gradient(145deg, var(--accent), #00ff88);
+  border: 2px solid var(--accent);
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.tech-card.active h3 {
+  color: white;
+  font-weight: 600;
+}
+
+/* ÍCONOS LOCALES - TAMAÑO CONSISTENTE PARA TODOS */
+.tool-icon {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 0.7rem;
+  transition: all 0.3s ease;
+  object-fit: contain;
+}
+
+/* ELIMINAR TAMAÑOS ESPECÍFICOS - TODOS LOS ICONOS SERÁN IGUALES */
+.tool-icon[src*="penpot"],
+.tool-icon[src*="android-studio"],
+.tool-icon[src*="server"],
+.tool-icon[src*="adobe-xd"] {
+  width: 3rem !important;
+  height: 3rem !important;
+  margin-bottom: 0.7rem;
+}
+
+.tech-card:hover .tool-icon {
+  transform: scale(1.1);
+}
+
+.tech-card.active .tool-icon {
+  transform: scale(1.2);
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* ELIMINAR AJUSTES ESPECÍFICOS PARA CARDS CON ICONOS GRANDES */
+/* Todos los cards tendrán la misma altura */
+
+.tool-fallback {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 0.7rem;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.tech-card h3 {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.tech-card p {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-align: center;
+  color: white;
+  margin: 0;
+}
+
+.tech-card.active p {
+  opacity: 1;
+  max-height: 5rem;
+  margin-top: 0.5rem;
+}
+
+/* Mejorar visibilidad en tema claro */
+.light .tech-card {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+}
+
+.light .tech-card:hover {
+  border: 2px solid var(--accent);
+}
+
+.light .tech-card.active {
+  background: linear-gradient(145deg, var(--accent), #00cc6a);
+}
+
+/* Responsive general */
+@media (max-width: 64rem) {
+  .technologies-categories {
+    gap: 0.6rem;
+  }
+  
+  .category-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .technologies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+    gap: 1rem;
+  }
+  
+  .tech-card {
+    min-height: 7rem;
+    padding: 1rem 0.5rem;
+  }
+  
+  .tool-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tech-card h3 {
+    font-size: 0.8rem;
+  }
+
+  .technologies-categories {
+    gap: 0.4rem;
+  }
+  
+  .category-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .technologies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    gap: 0.8rem;
+  }
+  
+  .tech-card {
+    min-height: 6rem;
+    padding: 0.8rem 0.4rem;
+  }
+  
+  .tool-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .technologies-categories {
+    gap: 0.3rem;
+  }
+  
+  .category-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}

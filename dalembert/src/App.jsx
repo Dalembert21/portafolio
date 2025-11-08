@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import Header from "./components/Header/Header";
+import Hero from "./components/Hero/Hero";
+import About from "./components/About/About";
+import Skills from "./components/Skills/Technologies";
+import Projects from "./components/Projects/Projects";
+import Contact from "./components/Contact/Contact";
+import Complements from "./components/Complements/Complements";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [darkMode, setDarkMode] = useState(true);
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+    document.body.className = darkMode ? "dark" : "light";
+  }, [darkMode]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <Header 
+        toggleTheme={() => setDarkMode(!darkMode)} 
+        toggleLang={() => setLang(lang === "en" ? "es" : "en")}
+        lang={lang}
+        darkMode={darkMode}
+      />
+      <Hero lang={lang} />
+       <Skills lang={lang} />
+      <Projects lang={lang} />
+      <About lang={lang} />
+     < Complements lang={lang} />
+      <Contact lang={lang} />
+    </div>
+  );
 }
 
-export default App
+export default App;
