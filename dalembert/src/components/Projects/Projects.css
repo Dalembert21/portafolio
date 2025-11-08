@@ -1,40 +1,345 @@
 .projects-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
+}
+
+.projects-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, var(--accent), #667eea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1.8rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  perspective: 1000px;
 }
 
 .project-card {
-  background: var(--card);
-  border-radius: 1.2rem;
-  padding: 1.8rem;
-  text-align: left;
-  transition: all 0.3s;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  height: 500px;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
+.project-card:active {
+  transform: scale(0.98);
+}
+
+.project-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.project-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.project-card-front,
+.project-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 1rem;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.project-card-front {
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-back {
+  background: var(--card);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid var(--accent);
+}
+
+.project-image-container {
+  height: 200px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-content h3 {
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.project-description {
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex: 1;
+  opacity: 0.9;
+}
+
+/* Nuevo: Sección de herramientas en el frente */
+.front-tools {
+  margin-bottom: 1.5rem;
+}
+
+.front-tools h4 {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-align: left;
+}
+
+.front-tools-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.front-tool-tag {
+  background: rgba(100, 126, 234, 0.1);
+  color: var(--accent);
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(100, 126, 234, 0.2);
+}
+
+.back-content {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.back-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+  text-align: center;
+}
+
+.back-description {
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.features-section,
+.tools-section {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.features-section h4,
+.tools-section h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-list li {
+  padding: 0.4rem 0;
+  color: var(--text);
+  position: relative;
+  padding-left: 1.5rem;
+  opacity: 0.9;
+}
+
+.features-list li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.tools-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tool-tag {
+  background: rgba(100, 126, 234, 0.1);
+  color: var(--accent);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(100, 126, 234, 0.2);
+}
+
+.project-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  pointer-events: auto;
+}
+
+.project-actions * {
+  pointer-events: auto;
+}
+
+.project-btn-primary,
+.project-btn-flip {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  flex: 1;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.project-btn-primary {
+  background: var(--accent);
+  color: white;
+  border: 1.5px solid transparent;
+}
+
+.project-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.project-btn-flip {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--accent);
+}
+
+.project-btn-flip:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.back-flip-btn {
+  background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--accent);
 }
 
-.project-card h3 {
-  font-size: 1.2rem;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
+.back-flip-btn:hover {
+  background: var(--accent);
+  color: white;
 }
 
-.project-card p {
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
+/* Efectos de hover para toda la tarjeta */
+.project-card:hover .project-card-inner:not(.flipped) {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  border-color: var(--accent);
 }
 
-.tools {
-  font-size: 0.85rem;
-  opacity: 0.8;
+/* Responsive */
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 2rem 1rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .project-card {
+    height: 480px;
+  }
+  
+  .project-actions {
+    flex-direction: column;
+  }
+  
+  .project-btn-primary,
+  .project-btn-flip {
+    padding: 0.5rem 1rem;
+  }
+  
+  .front-tools-tags {
+    gap: 0.3rem;
+  }
+  
+  .front-tool-tag {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-section h2 {
+    font-size: 2rem;
+  }
+  
+  .project-card {
+    height: 450px;
+  }
+  
+  .back-content {
+    padding: 1.5rem;
+  }
+  
+  .project-content,
+  .back-content {
+    padding: 1.2rem;
+  }
+  
+  .front-tools h4 {
+    font-size: 0.9rem;
+  }
 }

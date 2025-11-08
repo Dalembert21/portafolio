@@ -4,6 +4,8 @@ import "./Technologies.css";
 
 // Importar todos los iconos desde src/assets/
 import htmlIcon from "../../assets/html.svg";
+import reactNativeIcon from "../../assets/react-native.svg";
+import seleniumIcon from "../../assets/selenium.svg";
 import cssIcon from "../../assets/css.svg";
 import jsIcon from "../../assets/javascript.svg";
 import reactIcon from "../../assets/react.svg";
@@ -29,19 +31,25 @@ import vscodeIcon from "../../assets/vscode.svg";
 import androidStudioIcon from "../../assets/android-studio.svg";
 import postmanIcon from "../../assets/postman.svg";
 
+// Agregar imports para las nuevas herramientas de testing
+import katalonIcon from "../../assets/katalon.svg";
+import jasmineIcon from "../../assets/jasmine.svg";
+import jmeterIcon from "../../assets/jmeter.svg";
+
 export default function Technologies({ lang }) {
   const [active, setActive] = useState(null);
   const [activeCategory, setActiveCategory] = useState("frontend");
 
-  // 🎨 FRONTEND
-  const frontendTools = [
-    { name: "HTML", desc: { en: "Markup language for structuring web pages.", es: "Lenguaje de marcado para estructurar páginas web." }, icon: htmlIcon },
-    { name: "CSS", desc: { en: "Stylesheet language for designing web pages.", es: "Lenguaje de hojas de estilo para diseñar páginas web." }, icon: cssIcon },
-    { name: "JavaScript", desc: { en: "Programming language for web interactivity.", es: "Lenguaje de programación para interactividad web." }, icon: jsIcon },
-    { name: "React", desc: { en: "Frontend library for building interfaces.", es: "Librería frontend para construir interfaces." }, icon: reactIcon },
-    { name: "Angular", desc: { en: "Framework for building dynamic web apps.", es: "Framework para construir aplicaciones web dinámicas." }, icon: angularIcon },
-    { name: "Ionic", desc: { en: "Cross-platform mobile app development.", es: "Desarrollo de aplicaciones móviles multiplataforma." }, icon: ionicIcon },
-  ];
+// 🎨 FRONTEND
+const frontendTools = [
+  { name: "HTML", desc: { en: "Markup language for structuring web pages.", es: "Lenguaje de marcado para estructurar páginas web." }, icon: htmlIcon },
+  { name: "CSS", desc: { en: "Stylesheet language for designing web pages.", es: "Lenguaje de hojas de estilo para diseñar páginas web." }, icon: cssIcon },
+  { name: "JavaScript", desc: { en: "Programming language for web interactivity.", es: "Lenguaje de programación para interactividad web." }, icon: jsIcon },
+  { name: "React", desc: { en: "Frontend library for building interfaces.", es: "Librería frontend para construir interfaces." }, icon: reactIcon },
+  { name: "React Native", desc: { en: "Framework for building native mobile apps.", es: "Framework para construir aplicaciones móviles nativas." }, icon: reactNativeIcon },
+  { name: "Angular", desc: { en: "Framework for building dynamic web apps.", es: "Framework para construir aplicaciones web dinámicas." }, icon: angularIcon },
+  { name: "Ionic", desc: { en: "Cross-platform mobile app development.", es: "Desarrollo de aplicaciones móviles multiplataforma." }, icon: ionicIcon },
+];
 
   // ⚙️ BACKEND
   const backendTools = [
@@ -79,15 +87,35 @@ export default function Technologies({ lang }) {
     },
   ];
 
-  // 🛠️ HERRAMIENTAS Y COLABORACIÓN
-  const devopsTools = [
-    { name: "Git", desc: { en: "Distributed version control system.", es: "Sistema de control de versiones distribuido." }, icon: gitIcon },
-    { name: "GitHub", desc: { en: "Platform for code hosting and collaboration.", es: "Plataforma para alojamiento de código y colaboración." }, icon: githubIcon },
-    { name: "Docker", desc: { en: "Platform for containerizing applications.", es: "Plataforma para containerización de aplicaciones." }, icon: dockerIcon },
-    { name: "VS Code", desc: { en: "Code editor with extensive extensions.", es: "Editor de código con extensiones extensas." }, icon: vscodeIcon },
-    { name: "Android Studio", desc: { en: "IDE for Android development.", es: "IDE para desarrollo Android." }, icon: androidStudioIcon },
-    { name: "Postman", desc: { en: "API development and testing platform.", es: "Plataforma para desarrollo y testing de APIs." }, icon: postmanIcon },
+  // 🧪 TESTING Y CALIDAD
+  const testingTools = [
+ 
+    { 
+      name: "Jasmine", 
+      desc: { en: "Unit testing framework for JavaScript and Angular applications.", es: "Framework de pruebas unitarias para aplicaciones JavaScript y Angular." }, 
+      icon: jasmineIcon
+    },
+    { 
+      name: "JMeter", 
+      desc: { en: "Performance and load testing for web applications.", es: "Pruebas de rendimiento y carga para aplicaciones web." }, 
+      icon: jmeterIcon
+    },
+      { 
+    name: "Selenium", 
+    desc: { en: "Web application testing automation framework.", es: "Framework de automatización de pruebas para aplicaciones web." }, 
+    icon: seleniumIcon
+  },
   ];
+
+// 🛠️ HERRAMIENTAS Y COLABORACIÓN
+const devopsTools = [
+  { name: "Git", desc: { en: "Distributed version control system.", es: "Sistema de control de versiones distribuido." }, icon: gitIcon },
+  { name: "GitHub", desc: { en: "Platform for code hosting and collaboration.", es: "Plataforma para alojamiento de código y colaboración." }, icon: githubIcon },
+  { name: "Docker", desc: { en: "Platform for containerizing applications.", es: "Plataforma para containerización de aplicaciones." }, icon: dockerIcon },
+  { name: "VS Code", desc: { en: "Code editor with extensive extensions.", es: "Editor de código con extensiones extensas." }, icon: vscodeIcon }, // ← Agregar esta línea
+  { name: "Android Studio", desc: { en: "IDE for Android development.", es: "IDE para desarrollo Android." }, icon: androidStudioIcon },
+  { name: "Postman", desc: { en: "API development and testing platform.", es: "Plataforma para desarrollo y testing de APIs." }, icon: postmanIcon },
+];
 
   // 🧠 LENGUAJES
   const languagesTools = [
@@ -103,8 +131,9 @@ export default function Technologies({ lang }) {
       'backend': frontendTools.length,
       'database': frontendTools.length + backendTools.length,
       'design': frontendTools.length + backendTools.length + databaseTools.length,
-      'devops': frontendTools.length + backendTools.length + databaseTools.length + designTools.length,
-      'languages': frontendTools.length + backendTools.length + databaseTools.length + designTools.length + devopsTools.length
+      'testing': frontendTools.length + backendTools.length + databaseTools.length + designTools.length,
+      'devops': frontendTools.length + backendTools.length + databaseTools.length + designTools.length + testingTools.length,
+      'languages': frontendTools.length + backendTools.length + databaseTools.length + designTools.length + testingTools.length + devopsTools.length
     };
     
     const globalIndex = categoryIndexMap[category] + index;
@@ -117,8 +146,9 @@ export default function Technologies({ lang }) {
       'backend': frontendTools.length,
       'database': frontendTools.length + backendTools.length,
       'design': frontendTools.length + backendTools.length + databaseTools.length,
-      'devops': frontendTools.length + backendTools.length + databaseTools.length + designTools.length,
-      'languages': frontendTools.length + backendTools.length + databaseTools.length + designTools.length + devopsTools.length
+      'testing': frontendTools.length + backendTools.length + databaseTools.length + designTools.length,
+      'devops': frontendTools.length + backendTools.length + databaseTools.length + designTools.length + testingTools.length,
+      'languages': frontendTools.length + backendTools.length + databaseTools.length + designTools.length + testingTools.length + devopsTools.length
     };
     
     return categoryIndexMap[category] + index;
@@ -190,6 +220,13 @@ export default function Technologies({ lang }) {
         >
           {lang === "en" ? "Design" : "Diseño"}
         </button>
+        {/* NUEVA CATEGORÍA TESTING */}
+        <button 
+          className={`category-btn ${activeCategory === 'testing' ? 'active' : ''}`}
+          onClick={() => setActiveCategory('testing')}
+        >
+          {lang === "en" ? "Testing" : "Testing"}
+        </button>
         <button 
           className={`category-btn ${activeCategory === 'languages' ? 'active' : ''}`}
           onClick={() => setActiveCategory('languages')}
@@ -229,6 +266,13 @@ export default function Technologies({ lang }) {
       {activeCategory === 'design' && (
         <div className="technologies-grid">
           {renderTools(designTools, 'design')}
+        </div>
+      )}
+
+      {/* NUEVA SECCIÓN: Testing Tools */}
+      {activeCategory === 'testing' && (
+        <div className="technologies-grid">
+          {renderTools(testingTools, 'testing')}
         </div>
       )}
 
