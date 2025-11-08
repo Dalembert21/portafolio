@@ -33,7 +33,7 @@ import postmanIcon from "../../assets/postman.svg";
 
 // Agregar imports para las nuevas herramientas de testing
 import katalonIcon from "../../assets/katalon.svg";
-import jasmineIcon from "../../assets/jasmine.svg";
+import jasmineIcon from "../../assets/Jasmine.svg";
 import jmeterIcon from "../../assets/jmeter.svg";
 
 export default function Technologies({ lang }) {
