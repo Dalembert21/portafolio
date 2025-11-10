@@ -74,7 +74,7 @@
   font-weight: 600;
 }
 
-/* ÍCONOS LOCALES - TAMAÑO CONSISTENTE PARA TODOS */
+
 .tool-icon {
   width: 3rem;
   height: 3rem;
@@ -83,7 +83,7 @@
   object-fit: contain;
 }
 
-/* ELIMINAR TAMAÑOS ESPECÍFICOS - TODOS LOS ICONOS SERÁN IGUALES */
+
 .tool-icon[src*="penpot"],
 .tool-icon[src*="android-studio"],
 .tool-icon[src*="server"],
@@ -102,8 +102,7 @@
   filter: brightness(1.1) contrast(1.1);
 }
 
-/* ELIMINAR AJUSTES ESPECÍFICOS PARA CARDS CON ICONOS GRANDES */
-/* Todos los cards tendrán la misma altura */
+
 
 .tool-fallback {
   width: 3rem;

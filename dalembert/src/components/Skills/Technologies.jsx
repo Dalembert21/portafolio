@@ -31,7 +31,7 @@ import vscodeIcon from "../../assets/vscode.svg";
 import androidStudioIcon from "../../assets/android-studio.svg";
 import postmanIcon from "../../assets/postman.svg";
 
-// Agregar imports para las nuevas herramientas de testing
+
 
 import jasmineIcon from "../../assets/Jasmine.svg";
 import jmeterIcon from "../../assets/jmeter.svg";
@@ -59,7 +59,7 @@ const frontendTools = [
     { name: "Java", desc: { en: "General-purpose programming language.", es: "Lenguaje de programación de propósito general." }, icon: javaIcon },
   ];
 
-  // 🗃️ BASES DE DATOS (Firebase movido aquí)
+  // 🗃️ BASES DE DATOS
   const databaseTools = [
     { name: "Firebase", desc: { en: "Platform with authentication and real-time database.", es: "Plataforma con autenticación y base de datos en tiempo real." }, icon: firebaseIcon },
     { name: "MySQL", desc: { en: "Relational database management system.", es: "Sistema de gestión de bases de datos relacionales." }, icon: mysqlIcon },
