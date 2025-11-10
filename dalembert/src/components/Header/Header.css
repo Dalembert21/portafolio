@@ -3,17 +3,25 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 2rem;
-  position: sticky;
+  position: fixed; /* Cambiado a fixed */
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   backdrop-filter: blur(12px);
   background-color: rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+  /* Eliminamos las transiciones de hide/show */
+}
+
+/* Añade padding al body para que el contenido no quede detrás del header */
+body {
+  padding-top: 80px; /* Ajusta según la altura de tu header */
 }
 
 .logo-container {
   flex-shrink: 0;
-  z-index: 101;
+  z-index: 1001;
 }
 
 .logo-img {
@@ -71,7 +79,7 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-  z-index: 101;
+  z-index: 1001;
 }
 
 .icon-btn, .lang-btn {
@@ -126,6 +134,11 @@
   .header-container {
     padding: 1rem 1.5rem;
     flex-wrap: nowrap;
+  }
+  
+  /* Ajustar el padding del body para móviles */
+  body {
+    padding-top: 70px;
   }
   
   /* Mostrar hamburguesa y ocultar menú normal */
@@ -190,6 +203,10 @@
 @media (max-width: 480px) {
   .header-container {
     padding: 0.8rem 1rem;
+  }
+  
+  body {
+    padding-top: 60px;
   }
   
   .logo-img {
