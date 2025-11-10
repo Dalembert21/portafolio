@@ -1,7 +1,7 @@
 // FooterSimple.jsx
 import React from "react";
 
-
+//nonbre de la clase 
 export default function FooterSimple({ lang }) {
   const currentYear = new Date().getFullYear();
   
