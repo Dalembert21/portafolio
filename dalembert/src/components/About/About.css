@@ -1,7 +1,9 @@
 .about-section {
   max-width: 70rem;
-  margin: auto;
+  margin: 0 auto;
   padding: 4rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .about-content {
@@ -10,26 +12,28 @@
   gap: 4rem;
   align-items: start;
   margin-top: 2rem;
+  width: 100%;
 }
 
 .about-image-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
 }
 
-/* TARJETA ORIGINAL QUE SÍ FUNCIONA */
+/* TARJETA CON TAMAÑO AJUSTADO */
 .flip-card {
   perspective: 1000px;
   cursor: pointer;
   width: 100%;
-  max-width: 16rem; /* Este es el tamaño del cuadro */
+  max-width: 18rem;
 }
 
 .flip-card-inner {
   position: relative;
   width: 100%;
-  height: 20rem; /* Altura del cuadro */
+  height: 22rem;
   transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   transform-style: preserve-3d;
 }
@@ -63,17 +67,18 @@
   transform: rotateY(180deg);
   padding: 1.5rem;
   text-align: center;
+  justify-content: space-between;
 }
 
 /* IMAGEN QUE OCUPA CASI TODO EL CUADRO */
 .about-image {
-  width: 95%; /* Ocupa casi todo el ancho del cuadro */
-  height: 95%; /* Ocupa casi todo el alto del cuadro */
+  width: 95%;
+  height: 95%;
   border-radius: 0.8rem;
   transition: all 0.4s ease;
   filter: grayscale(30%) brightness(1.05);
   border: 3px solid rgba(255, 255, 255, 0.1);
-  object-fit: cover; /* Mantiene la proporción de la imagen */
+  object-fit: cover;
 }
 
 .flip-card:hover .about-image {
@@ -82,75 +87,91 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* Información personal mejorada */
+/* Información personal MEJORADA Y COMPACTADA */
 .personal-info {
   text-align: center;
   width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 0;
 }
 
 .personal-info h3 {
   color: white;
-  font-size: 1.3rem;
-  margin-bottom: 1.2rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
   font-weight: 600;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
 }
 
 .info-item {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 0.8rem;
-  padding: 0.5rem 0.8rem;
+  margin-bottom: 0.6rem;
+  padding: 0.4rem 0.6rem;
   background: rgba(255, 255, 255, 0.15);
-  border-radius: 0.6rem;
+  border-radius: 0.5rem;
   width: 100%;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  min-height: 2.2rem;
+  box-sizing: border-box;
 }
 
 .info-item:hover {
   background: rgba(255, 255, 255, 0.2);
-  transform: translateX(5px);
+  transform: translateX(3px);
 }
 
 .info-item .icon {
-  font-size: 1.1rem;
-  margin-right: 0.6rem;
-  min-width: 1.4rem;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  min-width: 1.2rem;
   text-align: center;
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
 }
 
 .info-item span:last-child {
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Indicadores de clic mejorados */
+/* Indicadores de clic MEJORADOS */
 .click-hint {
   position: absolute;
-  bottom: 1rem;
+  bottom: 0.8rem;
   background: rgba(0, 0, 0, 0.8);
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 1.5rem;
+  font-size: 0.7rem;
   animation: float 3s ease-in-out infinite;
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-weight: 500;
+  max-width: 80%;
+  text-align: center;
+  line-height: 1.2;
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
+  50% { transform: translateY(-3px); }
 }
 
 .about-text {
   text-align: left;
   line-height: 1.7;
+  width: 100%;
 }
 
 .about-text p {
@@ -164,8 +185,10 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  text-align: justify; /* AGREGADO: Texto justificado */
-  text-justify: inter-word; /* Mejor distribución de palabras */
+  text-align: justify;
+  text-justify: inter-word;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Efectos de brillo sutil */
@@ -185,84 +208,167 @@
   opacity: 1;
 }
 
-/* Responsive */
+/* Responsive - MEJORADO */
 @media (max-width: 64rem) {
+  .about-section {
+    padding: 4rem 2rem;
+    width: 100%;
+  }
+  
   .about-content {
     grid-template-columns: 1fr;
     gap: 3rem;
     text-align: center;
+    width: 100%;
   }
   
   .about-text {
     text-align: center;
+    width: 100%;
   }
   
   .about-text p {
-    text-align: justify; /* Mantener justificado en responsive */
+    text-align: justify;
+    width: 100%;
   }
   
   .flip-card {
-    max-width: 14rem;
+    max-width: 16rem;
+    margin: 0 auto;
   }
   
   .flip-card-inner {
-    height: 18rem;
+    height: 20rem;
+  }
+  
+  .about-image-container {
+    justify-content: center;
   }
 }
 
 @media (max-width: 48rem) {
   .about-section {
     padding: 3rem 1.5rem;
+    width: 100%;
   }
   
   .about-content {
     gap: 2.5rem;
+    width: 100%;
   }
   
   .about-text p {
     font-size: 1rem;
     padding: 2rem;
-    text-align: justify; /* Mantener justificado en responsive */
+    text-align: justify;
+    width: 100%;
   }
   
   .flip-card {
-    max-width: 13rem;
+    max-width: 15rem;
+    margin: 0 auto;
   }
   
   .flip-card-inner {
-    height: 17rem;
+    height: 19rem;
+  }
+  
+  .personal-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .info-item {
+    margin-bottom: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    min-height: 2rem;
+  }
+  
+  .info-item span:last-child {
+    font-size: 0.8rem;
   }
 }
 
 @media (max-width: 30rem) {
   .about-section {
     padding: 2rem 1rem;
+    width: 100%;
   }
   
   .about-content {
     gap: 2rem;
+    width: 100%;
   }
   
   .about-text p {
     padding: 1.5rem;
     font-size: 0.95rem;
-    text-align: justify; /* Mantener justificado en responsive */
+    text-align: justify;
+    width: 100%;
   }
   
   .flip-card {
-    max-width: 12rem;
+    max-width: 14rem;
+    margin: 0 auto;
   }
   
   .flip-card-inner {
-    height: 16rem;
+    height: 18rem;
   }
   
   .click-hint {
-    font-size: 0.7rem;
-    padding: 0.4rem 0.8rem;
+    font-size: 0.65rem;
+    padding: 0.35rem 0.7rem;
+    bottom: 0.6rem;
   }
   
   .personal-info h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .info-item {
+    margin-bottom: 0.4rem;
+    padding: 0.3rem 0.4rem;
+    min-height: 1.8rem;
+  }
+  
+  .info-item .icon {
+    font-size: 0.9rem;
+    margin-right: 0.4rem;
+    min-width: 1rem;
+  }
+  
+  .info-item span:last-child {
+    font-size: 0.75rem;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .about-section {
+    padding: 2rem 0.8rem;
+    width: 100%;
+  }
+  
+  .flip-card {
+    max-width: 13rem;
+    margin: 0 auto;
+  }
+  
+  .flip-card-inner {
+    height: 17rem;
+  }
+  
+  .personal-info h3 {
+    font-size: 0.95rem;
+  }
+  
+  .info-item span:last-child {
+    font-size: 0.7rem;
+  }
+  
+  .about-text p {
+    padding: 1.2rem;
+    font-size: 0.9rem;
   }
 }

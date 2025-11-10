@@ -3,6 +3,8 @@
   padding: 4rem 2rem;
   max-width: 70rem;
   margin: auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .complements-description {
@@ -20,6 +22,7 @@
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
+  width: 100%;
 }
 
 .complement-card {
@@ -37,6 +40,8 @@
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .complement-card:hover {
@@ -61,10 +66,18 @@
   font-size: 2.5rem;
   margin-bottom: 1rem;
   transition: all 0.3s ease;
+  filter: grayscale(0.3);
+  transform: scale(1);
+}
+
+.complement-card:hover .complement-icon {
+  filter: grayscale(0);
+  transform: scale(1.1);
 }
 
 .complement-card.active .complement-icon {
   transform: scale(1.2);
+  filter: grayscale(0) brightness(1.2);
 }
 
 .complement-card h3 {

@@ -1,21 +1,29 @@
+// FooterSimple.jsx
 import React from "react";
-import "./Contact.css";
-import { motion } from "framer-motion";
+import "./Footer.css";
 
-export default function Contact({ lang }) {
+export default function FooterSimple({ lang }) {
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <section id="contact" className="contact-section">
-      <motion.h2 whileInView={{ opacity: 1 }} initial={{ opacity: 0 }}>
-        {lang === "en" ? "Contact Me" : "Contáctame"}
-      </motion.h2>
-      <p>
-        {lang === "en"
-          ? "Interested in working together? Reach me at:"
-          : "¿Interesado en colaborar? Escríbeme a:"}
-      </p>
-      <a href="mailto:dalembertbravo2@gmail.com" className="contact-btn">
-        dalembertbravo2@gmail.com
-      </a>
-    </section>
+    <footer className="footer-simple">
+      <div className="footer-simple-content">
+        <p>&copy; {currentYear} Dalembert Bravo</p>
+        <div className="footer-links">
+          <a href="mailto:dalembertbravo2@gmail.com">Email</a>
+          <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        </div>
+        <p className="footer-message">
+          {lang === "en" 
+            ? "Built with React & passion" 
+            : "Hecho con React y pasión"}
+        </p>
+      </div>
+    </footer>
   );
 }
