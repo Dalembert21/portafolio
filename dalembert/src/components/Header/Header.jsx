@@ -27,11 +27,15 @@ export default function Header({ toggleTheme, toggleLang, lang, darkMode }) {
 
   const handleNavClick = (sectionId) => {
     closeMenu();
-    // Scroll suave a la sección
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    closeMenu();
   };
   
   return (
@@ -48,7 +52,7 @@ export default function Header({ toggleTheme, toggleLang, lang, darkMode }) {
           className="logo-img"
           animate={{ rotate: [0, 10, -10, 0] }}
           transition={{ duration: 2, repeat: Infinity, repeatDelay: 6 }}
-          onClick={() => handleNavClick('hero')}
+          onClick={scrollToTop}
         />
       </div>
 
