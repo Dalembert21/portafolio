@@ -12,42 +12,48 @@ export default function Complements({ lang }) {
       desc: { 
         en: "Collaborating effectively in team environments, sharing knowledge and supporting colleagues to achieve common goals.", 
         es: "Colaboración efectiva en entornos de equipo, compartiendo conocimiento y apoyando a colegas para alcanzar objetivos comunes." 
-      } 
+      },
+      icon: "🤝"
     },
     { 
       name: lang === "en" ? "Adaptability" : "Adaptabilidad", 
       desc: { 
         en: "Quickly adapting to new technologies, methodologies and work environments. Flexible approach to changing requirements.", 
         es: "Adaptación rápida a nuevas tecnologías, metodologías y entornos laborales. Enfoque flexible ante requisitos cambiantes." 
-      } 
+      },
+      icon: "🔄"
     },
     { 
       name: lang === "en" ? "Problem Solving" : "Resolución de problemas", 
       desc: { 
         en: "Analytical thinking and creative solutions. Breaking down complex problems and implementing effective solutions.", 
         es: "Pensamiento analítico y soluciones creativas. Descomposición de problemas complejos e implementación de soluciones efectivas." 
-      } 
+      },
+      icon: "🔍"
     },
     { 
       name: lang === "en" ? "Communication" : "Comunicación", 
       desc: { 
         en: "Clear and effective communication with teams, stakeholders and clients. Active listening and clear expression of ideas.", 
         es: "Comunicación clara y efectiva con equipos, stakeholders y clientes. Escucha activa y expresión clara de ideas." 
-      } 
+      },
+      icon: "💬"
     },
     { 
       name: lang === "en" ? "Creativity" : "Creatividad", 
       desc: { 
         en: "Innovative approach to development challenges. Designing unique solutions and thinking outside conventional patterns.", 
         es: "Enfoque innovador para desafíos de desarrollo. Diseño de soluciones únicas y pensamiento beyond patrones convencionales." 
-      } 
+      },
+      icon: "🎨"
     },
     { 
       name: lang === "en" ? "Time Management" : "Gestión del tiempo", 
       desc: { 
         en: "Efficient organization of tasks and priorities. Meeting deadlines while maintaining quality standards.", 
         es: "Organización eficiente de tareas y prioridades. Cumplimiento de plazos manteniendo estándares de calidad." 
-      } 
+      },
+      icon: "⏰"
     }
   ];
 
@@ -84,7 +90,7 @@ export default function Complements({ lang }) {
       <p className="complements-description">
         {lang === "en" 
           ? "Personal attributes that enable effective interaction and performance in professional environments"
-          : "Atributos personales que permiten una interacción y desempeño efectivos en entornos profesionales"
+          : "Atributos personales que permiten una interacción y desempeño efectivo en entornos profesionales"
         }
       </p>
 
@@ -102,7 +108,7 @@ export default function Complements({ lang }) {
               transition={{ duration: 0.4, delay: i * 0.1 }}
               whileHover={{ scale: 1.05 }}
             >
-              <div className="complement-icon">💡</div>
+              <div className="complement-icon">{skill.icon}</div>
               <h3>{skill.name}</h3>
               <p>{skill.desc[lang]}</p>
               <div className="complement-hint">
