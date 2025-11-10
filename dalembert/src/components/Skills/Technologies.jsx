@@ -32,7 +32,7 @@ import androidStudioIcon from "../../assets/android-studio.svg";
 import postmanIcon from "../../assets/postman.svg";
 
 // Agregar imports para las nuevas herramientas de testing
-import katalonIcon from "../../assets/katalon.svg";
+
 import jasmineIcon from "../../assets/Jasmine.svg";
 import jmeterIcon from "../../assets/jmeter.svg";
 

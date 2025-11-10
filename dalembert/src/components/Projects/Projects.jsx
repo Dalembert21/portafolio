@@ -5,7 +5,7 @@ import "./Projects.css";
 // Importa las imágenes
 import utadriveImage from "../../assets/utaDrive.png";
 import lionproduccionesImage from "../../assets/lionProducciones.png";
-import busappImage from "../../assets/chasquiBus.png";
+import busappImage from "../../assets/chasQuiBus.png";
 import birthdayImage from "../../assets/cumple3.png";
 
 export default function Projects({ lang }) {
