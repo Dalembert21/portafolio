@@ -8,7 +8,7 @@
 .projects-section h2 {
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: var(--accent); /* CAMBIO AQUÍ - Mismo color que technologies */
+  color: var(--accent); 
   font-weight: 700;
 }
 

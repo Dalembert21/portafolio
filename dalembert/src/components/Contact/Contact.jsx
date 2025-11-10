@@ -1,6 +1,6 @@
 // FooterSimple.jsx
 import React from "react";
-import "./Footer.css";
+
 
 export default function FooterSimple({ lang }) {
   const currentYear = new Date().getFullYear();

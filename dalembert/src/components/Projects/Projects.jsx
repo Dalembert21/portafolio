@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./Projects.css";
 
-// Importa las imágenes
+
 import utadriveImage from "../../assets/utaDrive.png";
 import lionproduccionesImage from "../../assets/lionProducciones.png";
 import busappImage from "../../assets/chasQuiBus.png";
