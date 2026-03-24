@@ -13,7 +13,7 @@ export default function Hero({ lang }) {
       viewGithub: "View GitHub"
     },
     es: {
-      hi: " ¡Hola, soy",
+      hi: " Hola, soy",
       name: "Dalembert Bravo",
       role: "Desarrollador Full-Stack",
       desc: "Construyendo soluciones eficientes y elegantes con tecnologías modernas.",
