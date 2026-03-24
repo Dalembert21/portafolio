@@ -73,12 +73,12 @@ export default function Projects({ lang }) {
         es: "Página interactiva de cumpleaños con galería de fotos, reproductor de música y funcionalidad para guardar recuerdos."
       },
       image: birthdayImage,
-      link: "https://felizcumplecami.netlify.app/", 
+      link: "https://felizcumple24.netlify.app/", 
       features: {
         en: ["Photo gallery", "Music player", "Memory storage", "Responsive design", "Interactive UI"],
         es: ["Galería de fotos", "Reproductor de música", "Almacenamiento de recuerdos", "Diseño responsive", "UI interactiva"]
       },
-      github: "https://felizcumple24.netlify.app/" 
+      github: "https://github.com/Dalembert21/felizCumplea-os" 
     }
   ];
 
