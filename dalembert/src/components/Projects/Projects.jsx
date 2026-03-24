@@ -78,7 +78,7 @@ export default function Projects({ lang }) {
         en: ["Photo gallery", "Music player", "Memory storage", "Responsive design", "Interactive UI"],
         es: ["Galería de fotos", "Reproductor de música", "Almacenamiento de recuerdos", "Diseño responsive", "UI interactiva"]
       },
-      github: "https://github.com/Dalembert21/felizCumplea-os" 
+      github: "https://felizcumple24.netlify.app/" 
     }
   ];
 
