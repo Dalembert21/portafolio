@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function Hero({ lang }) {
   const text = {
     en: {
-      hi: "👋 Hi, I'm",
+      hi: " Hi, I'm",
       name: "Dalembert Bravo",
       role: "Full-Stack Developer",
       desc: "Building efficient and elegant solutions using modern web technologies.",
@@ -13,7 +13,7 @@ export default function Hero({ lang }) {
       viewGithub: "View GitHub"
     },
     es: {
-      hi: "👋 ¡Hola, soy",
+      hi: " ¡Hola, soy",
       name: "Dalembert Bravo",
       role: "Desarrollador Full-Stack",
       desc: "Construyendo soluciones eficientes y elegantes con tecnologías modernas.",
@@ -52,7 +52,7 @@ export default function Hero({ lang }) {
           download 
           className="btn btn-primary"
         >
-          📄 {text[lang].downloadCV}
+           {text[lang].downloadCV}
         </a>
         <a 
           href="https://github.com/Dalembert21" 
@@ -60,7 +60,7 @@ export default function Hero({ lang }) {
           rel="noopener noreferrer" 
           className="btn btn-secondary"
         >
-          💻 {text[lang].viewGithub}
+           {text[lang].viewGithub}
         </a>
       </motion.div>
     </section>
