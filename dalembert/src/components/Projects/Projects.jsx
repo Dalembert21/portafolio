@@ -15,7 +15,10 @@ export default function Projects({ lang }) {
   const projects = [
     {
       id: 1,
-      title: "UTA-Drive - Vehicle Rental",
+      title: {
+        en: "UTA-Drive - Vehicle Rental",
+        es: "UTA-Drive - Alquiler de Vehículos"
+      },
       tools: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
       frontTools: ["HTML", "CSS", "JS", "PHP", "MySQL"],
       desc: {
@@ -115,7 +118,10 @@ export default function Projects({ lang }) {
     },
     {
       id: 4,
-      title: "BusTicket App",
+      title: {
+        en: "BusTicket App",
+        es: "App de Pasajes de Bus"
+      },
       tools: ["React Native", "Expo", "Supabase", "PostgreSQL", "OCR Technology"],
       frontTools: ["React Native", "Expo", "Supabase"],
       desc: {
@@ -132,7 +138,10 @@ export default function Projects({ lang }) {
     },
     {
       id: 5,
-      title: "Birthday Memories",
+      title: {
+        en: "Birthday Memories",
+        es: "Recuerdos de Cumpleaños"
+      },
       tools: ["HTML", "CSS", "JavaScript", "Responsive Design", "Audio API"],
       frontTools: ["HTML", "CSS", "JS", "Responsive"],
       desc: {
