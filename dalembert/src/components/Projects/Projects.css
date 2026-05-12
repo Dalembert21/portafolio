@@ -20,7 +20,7 @@
 }
 
 .project-card {
-  height: 500px;
+  height: 550px;
   perspective: 1000px;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -179,6 +179,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
 }
 
 .features-list li {
@@ -310,7 +313,7 @@
   }
   
   .project-card {
-    height: 480px;
+    height: 530px;
   }
   
   .project-actions {
@@ -333,6 +336,10 @@
     font-size: 0.7rem;
     padding: 0.25rem 0.6rem;
   }
+  
+  .features-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -341,7 +348,7 @@
   }
   
   .project-card {
-    height: 500px;
+    height: 550px;
   }
   
   .back-content {
@@ -372,7 +379,7 @@
 /* Para pantallas muy pequeñas */
 @media (max-width: 360px) {
   .project-card {
-    height: 520px;
+    height: 570px;
   }
   
   .project-actions {
