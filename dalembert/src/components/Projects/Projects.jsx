@@ -7,7 +7,7 @@ import utadriveImage from "../../assets/utaDrive.png";
 import lionproduccionesImage from "../../assets/lionProducciones.png";
 import busappImage from "../../assets/chasQuiBus.png";
 import birthdayImage from "../../assets/cumple3.png";
-import financieroImage from "../../assets/financiero.png";
+import financieroImage from "../../assets/fi1.png";
 
 export default function Projects({ lang }) {
   const [flippedCard, setFlippedCard] = useState(null);
