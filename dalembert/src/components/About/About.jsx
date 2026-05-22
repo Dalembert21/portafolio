@@ -7,20 +7,21 @@ export default function About({ lang }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const content = {
-    en: {
-      description:
-        "Passionate Full-Stack Software Developer focused on building efficient and visually appealing digital products. I enjoy working with technologies like React, NestJS, and PHP, combining logic, design, and performance to create exceptional user experiences. Always seeking new challenges that allow me to grow and learn more.",
-      age: "24 years",
-      location: "Ecuador",
-      education: "Software Engineering",
-    },
-    es: {
-      description:
-        "Apasionado desarrollador de software Full-Stack, enfocado en construir productos digitales eficientes y atractivos. Disfruto trabajar con tecnologías como React, NestJS, PHP, combinando lógica, diseño y rendimiento para crear experiencias de usuario excepcionales. Siempre en busca de nuevos desafíos que me permitan crecer y aprender más.",
-      age: "24 años",
-      location: "Ecuador",
-      education: "Ingeniería de Software",
-    },
+ en: {
+  description:
+    "Full-Stack Software Developer specialized in designing and building scalable applications using clean architectures and patterns such as DDD (Domain-Driven Design) and CQRS. Experienced in implementing event-driven systems with Apache Kafka, optimizing backend business logic, and developing efficient frontend interfaces. Focused on structure, code maintainability, and technical performance.",
+  age: "24 years",
+  location: "Ecuador",
+  education: "Software Engineering",
+},
+
+es: {
+  description:
+    "Desarrollador de software Full-Stack especializado en el diseño y construcción de aplicaciones escalables mediante el uso de arquitecturas limpias y patrones como DDD (Domain-Driven Design) y CQRS. Experiencia en la implementación de sistemas basados en eventos con Apache Kafka, optimización de lógica de negocio en el backend y desarrollo de interfaces eficientes en el frontend. Enfoque centrado en la estructura, la mantenibilidad del código y el rendimiento técnico.",
+  age: "24 años",
+  location: "Ecuador",
+  education: "Ingeniería de Software",
+},
   };
 
   const handleImageClick = () => {
