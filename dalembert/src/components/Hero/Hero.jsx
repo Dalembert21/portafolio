@@ -8,7 +8,7 @@ export default function Hero({ lang }) {
       hi: " Hi, I'm",
       name: "Dalembert Bravo",
       role: "Full-Stack Developer",
-      desc: "Building efficient and elegant solutions using modern web technologies.",
+      desc: "Engineering robust digital solutions that bridge complex backend systems with intuitive frontend experiences.",
       downloadCV: "Download CV",
       viewGithub: "View GitHub"
     },
@@ -16,7 +16,7 @@ export default function Hero({ lang }) {
       hi: " Hola, soy",
       name: "Dalembert Bravo",
       role: "Desarrollador Full-Stack",
-      desc: "Construyendo soluciones eficientes y elegantes con tecnologías modernas.",
+      desc: "Ingeniando soluciones digitales robustas que conectan sistemas backend complejos con experiencias frontend intuitivas.",
       downloadCV: "Descargar CV",
       viewGithub: "Ver GitHub"
     }
