@@ -1,18 +1,102 @@
-.contact-section {
+.contact-section.pulse-theme {
   text-align: center;
+  padding: 6rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
 }
 
-.contact-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+  animation: float 15s infinite alternate ease-in-out;
+  opacity: 0.15;
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--accent);
+  top: -100px;
+  left: -100px;
+}
+
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  background: var(--accent-blue);
+  bottom: -100px;
+  right: -100px;
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, 30px) scale(1.1); }
+}
+
+.contact-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  width: 100%;
+  background: var(--card);
+  padding: 4rem 2rem;
+  border-radius: 24px;
+  border: 1px solid rgba(128, 128, 128, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.pulse-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.pulse-subtitle {
+  font-size: 1.1rem;
+  color: var(--text);
+  opacity: 0.8;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.pulse-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
   background: var(--accent);
   color: white;
-  padding: 0.7rem 1.5rem;
-  border-radius: 0.8rem;
-  transition: 0.3s;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4);
+  animation: pulse-animation 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 
-.contact-btn:hover {
-  transform: scale(1.05);
-  background: #3ea442;
+.pulse-btn:hover {
+  transform: translateY(-3px);
+  background: var(--accent-blue);
+  animation: none;
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
+}
+
+.pulse-icon {
+  font-size: 1.2rem;
+}
+
+@keyframes pulse-animation {
+  0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
 }

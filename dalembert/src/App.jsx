@@ -6,6 +6,7 @@ import Skills from "./components/Skills/Technologies";
 import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
 import Complements from "./components/Complements/Complements";
+import CustomCursor from "./components/CustomCursor/CustomCursor";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <div>
+      <CustomCursor />
       <Header 
         toggleTheme={() => setDarkMode(!darkMode)} 
         toggleLang={() => setLang(lang === "en" ? "es" : "en")}

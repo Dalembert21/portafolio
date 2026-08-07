@@ -1,6 +1,8 @@
 .hero-section {
   text-align: center;
   padding: 6rem 2rem 3rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .accent {
@@ -85,3 +87,4 @@
     padding: 0.4rem 0.8rem;
   }
 }
+
