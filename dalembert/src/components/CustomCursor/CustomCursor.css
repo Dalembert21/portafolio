@@ -77,9 +77,19 @@ body.light .snitch-cursor.scrolling .wing {
   box-shadow: inset 0 0 8px rgba(255,255,255,1), 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Hide default cursor globally */
-* {
-  cursor: none !important;
+/* Hide default cursor globally ONLY on desktop/mouse devices */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* Ocultar Snitch y Harry en celulares/tablets para no entorpecer la pantalla */
+@media (hover: none), (pointer: coarse) {
+  .snitch-cursor,
+  .harry-chaser-container {
+    display: none !important;
+  }
 }
 
 /* Harry Chaser Styles */
