@@ -1,59 +1,60 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { FaCubes, FaUsers, FaCogs, FaRocket, FaCheckDouble, FaLaptopCode } from "react-icons/fa";
 import "./Complements.css";
 
 export default function Complements({ lang }) {
   const [active, setActive] = useState(null);
   const complementsSectionRef = useRef(null);
 
-  const softSkills = [
+  const coreCompetencies = [
     { 
-      name: lang === "en" ? "Teamwork" : "Trabajo en equipo", 
+      name: lang === "en" ? "Architecture & Scalability" : "Arquitectura y Escalabilidad", 
       desc: { 
-        en: "Collaborating effectively in team environments, sharing knowledge and supporting colleagues to achieve common goals.", 
-        es: "Colaboración efectiva en entornos de equipo, compartiendo conocimiento y apoyando a colegas para alcanzar objetivos comunes." 
+        en: "Designing systems with clean architectures, applying patterns like DDD and CQRS for long-term maintainability.", 
+        es: "Diseño de sistemas con arquitecturas limpias, aplicando patrones como DDD y CQRS para asegurar mantenibilidad a largo plazo." 
       },
-      icon: "🤝"
+      icon: <FaCubes />
     },
     { 
-      name: lang === "en" ? "Adaptability" : "Adaptabilidad", 
+      name: lang === "en" ? "Complex Problem Solving" : "Resolución de Problemas Complejos", 
       desc: { 
-        en: "Quickly adapting to new technologies, methodologies and work environments. Flexible approach to changing requirements.", 
-        es: "Adaptación rápida a nuevas tecnologías, metodologías y entornos laborales. Enfoque flexible ante requisitos cambiantes." 
+        en: "Analytical ability to build complex business logic, from ERP/accounting systems to OCR and biometric validations.", 
+        es: "Capacidad analítica para construir lógica de negocio compleja, desde sistemas ERP contables hasta validaciones biométricas y OCR." 
       },
-      icon: "🔄"
+      icon: <FaCogs />
     },
     { 
-      name: lang === "en" ? "Problem Solving" : "Resolución de problemas", 
+      name: lang === "en" ? "Agile Collaboration" : "Colaboración Ágil", 
       desc: { 
-        en: "Analytical thinking and creative solutions. Breaking down complex problems and implementing effective solutions.", 
-        es: "Pensamiento analítico y soluciones creativas. Descomposición de problemas complejos e implementación de soluciones efectivas." 
+        en: "Experience working in multidisciplinary teams under Scrum/Kanban methodologies, ensuring effective code reviews.", 
+        es: "Experiencia en equipos multidisciplinarios bajo metodologías Scrum/Kanban, asegurando revisiones de código efectivas." 
       },
-      icon: "🔍"
+      icon: <FaUsers />
     },
     { 
-      name: lang === "en" ? "Communication" : "Comunicación", 
+      name: lang === "en" ? "Ownership & Delivery" : "Responsabilidad y Entrega", 
       desc: { 
-        en: "Clear and effective communication with teams, stakeholders and clients. Active listening and clear expression of ideas.", 
-        es: "Comunicación clara y efectiva con equipos, stakeholders y clientes. Escucha activa y expresión clara de ideas." 
+        en: "Full responsibility for the development lifecycle, from system design to production deployment and CI/CD pipelines.", 
+        es: "Responsabilidad total del ciclo de desarrollo, desde el diseño del sistema hasta el despliegue en producción y pipelines CI/CD." 
       },
-      icon: "💬"
+      icon: <FaCheckDouble />
     },
     { 
-      name: lang === "en" ? "Creativity" : "Creatividad", 
+      name: lang === "en" ? "Technical Communication" : "Comunicación Técnica", 
       desc: { 
-        en: "Innovative approach to development challenges. Designing unique solutions and thinking outside conventional patterns.", 
-        es: "Enfoque innovador para desafíos de desarrollo. Diseño de soluciones únicas y pensamiento beyond patrones convencionales." 
+        en: "Translating complex business requirements (like electronic billing) into solid, well-documented technical solutions.", 
+        es: "Traducción de requerimientos de negocio complejos (como facturación electrónica) en soluciones técnicas sólidas y bien documentadas." 
       },
-      icon: "🎨"
+      icon: <FaLaptopCode />
     },
     { 
-      name: lang === "en" ? "Time Management" : "Gestión del tiempo", 
+      name: lang === "en" ? "Continuous Learning" : "Aprendizaje Continuo", 
       desc: { 
-        en: "Efficient organization of tasks and priorities. Meeting deadlines while maintaining quality standards.", 
-        es: "Organización eficiente de tareas y prioridades. Cumplimiento de plazos manteniendo estándares de calidad." 
+        en: "Fast adoption of new technologies across the stack, from frontend frameworks to robust backend ecosystems like .NET.", 
+        es: "Rápida adopción de nuevas tecnologías en el stack, desde frameworks frontend hasta ecosistemas backend robustos como .NET 10 y NestJS." 
       },
-      icon: "⏰"
+      icon: <FaRocket />
     }
   ];
 
@@ -84,18 +85,18 @@ export default function Complements({ lang }) {
         whileInView={{ opacity: 1, y: 0 }} 
         transition={{ duration: 0.6 }}
       >
-        {lang === "en" ? "Soft Skills" : "Habilidades Blandas"}
+        {lang === "en" ? "Core Competencies" : "Competencias Clave"}
       </motion.h2>
 
       <p className="complements-description">
         {lang === "en" 
-          ? "Personal attributes that enable effective interaction and performance in professional environments"
-          : "Atributos personales que permiten una interacción y desempeño efectivo en entornos profesionales"
+          ? "Professional attributes and methodologies that drive my software development process"
+          : "Atributos profesionales y metodologías que impulsan mi proceso de desarrollo de software"
         }
       </p>
 
       <div className="complements-grid">
-        {softSkills.map((skill, i) => {
+        {coreCompetencies.map((skill, i) => {
           const isActive = active === i;
           
           return (

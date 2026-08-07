@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import "./About.css";
 import { motion } from "framer-motion";
+import { FaBirthdayCake, FaMapMarkerAlt, FaGraduationCap } from "react-icons/fa";
 import daImage from "../../assets/da.jpg";
 
 export default function About({ lang }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const content = {
- en: {
-  description:
-    "Full-Stack Software Developer specialized in designing and building scalable applications using clean architectures and patterns such as DDD (Domain-Driven Design) and CQRS. Experienced in implementing event-driven systems with Apache Kafka, optimizing backend business logic, and developing efficient frontend interfaces. Focused on structure, code maintainability, and technical performance.",
-  age: "24 years",
-  location: "Ecuador",
-  education: "Software Engineering",
-},
+    en: {
+      description:
+        "Full Stack Software Engineer with experience in designing and developing high-performance web and mobile applications. Experience in complex systems such as ERPs, electronic billing platforms, and integrating technologies like OCR and biometric validation. My core stack includes .NET 10, NestJS, and the React ecosystem, applying clean architectures, microservices, DDD, and CQRS to deliver scalable and maintainable solutions.",
+      age: "24 years",
+      location: "Ecuador",
+      education: "Software Engineering",
+    },
 
-es: {
-  description:
-    "Desarrollador de software Full-Stack especializado en el diseño y construcción de aplicaciones escalables mediante el uso de arquitecturas limpias y patrones como DDD (Domain-Driven Design) y CQRS. Experiencia en la implementación de sistemas basados en eventos con Apache Kafka, optimización de lógica de negocio en el backend y desarrollo de interfaces eficientes en el frontend. Enfoque centrado en la estructura, la mantenibilidad del código y el rendimiento técnico.",
-  age: "24 años",
-  location: "Ecuador",
-  education: "Ingeniería de Software",
-},
+    es: {
+      description:
+        "Ingeniero de Software Full Stack con experiencia en el diseño y desarrollo de aplicaciones web y móviles de alto rendimiento. Experiencia en sistemas complejos como ERPs, plataformas de facturación electrónica e integraciones de OCR y validación biométrica. Trabajo principalmente con .NET 10, NestJS y el ecosistema de React, aplicando arquitecturas limpias, microservicios, DDD y CQRS para crear soluciones escalables y mantenibles.",
+      age: "24 años",
+      location: "Ecuador",
+      education: "Ingeniería de Software",
+    },
   };
 
   const handleImageClick = () => {
@@ -64,15 +65,15 @@ es: {
                 <div className="personal-info">
                   <h3>Dalembert Bravo</h3>
                   <div className="info-item">
-                    <span className="icon">🎂</span>
+                    <span className="icon"><FaBirthdayCake /></span>
                     <span>{content[lang].age}</span>
                   </div>
                   <div className="info-item">
-                    <span className="icon">📍</span>
+                    <span className="icon"><FaMapMarkerAlt /></span>
                     <span>{content[lang].location}</span>
                   </div>
                   <div className="info-item">
-                    <span className="icon">🎓</span>
+                    <span className="icon"><FaGraduationCap /></span>
                     <span>{content[lang].education}</span>
                   </div>
                 </div>

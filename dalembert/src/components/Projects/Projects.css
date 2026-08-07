@@ -20,7 +20,7 @@
 }
 
 .project-card {
-  height: 550px;
+  height: 600px;
   perspective: 1000px;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -101,18 +101,28 @@
   color: var(--accent);
   margin-bottom: 1rem;
   font-weight: 600;
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .project-description {
   color: var(--text);
   line-height: 1.6;
   margin-bottom: 1rem;
-  flex: 1;
   opacity: 0.9;
+  min-height: 5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .front-tools {
   margin-bottom: 1.5rem;
+  min-height: 4.5rem;
 }
 
 .front-tools h4 {
@@ -145,6 +155,30 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow-y: auto;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+/* Scrollbar styles for back content */
+.back-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.back-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.back-content::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+.back-content::after {
+  content: "";
+  display: block;
+  min-height: 2rem; /* Ensure padding at the bottom when scrolled */
 }
 
 .back-content h3 {
@@ -152,6 +186,10 @@
   margin-bottom: 1rem;
   color: var(--accent);
   text-align: center;
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .back-description {
@@ -160,6 +198,7 @@
   line-height: 1.6;
   opacity: 0.9;
   text-align: center;
+  min-height: 4.8rem;
 }
 
 .features-section,
@@ -314,7 +353,7 @@
   }
   
   .project-card {
-    height: 530px;
+    height: 580px;
   }
   
   .project-actions {
@@ -349,7 +388,7 @@
   }
   
   .project-card {
-    height: 550px;
+    height: 600px;
   }
   
   .back-content {
@@ -380,7 +419,7 @@
 /* Para pantallas muy pequeñas */
 @media (max-width: 360px) {
   .project-card {
-    height: 570px;
+    height: 620px;
   }
   
   .project-actions {
