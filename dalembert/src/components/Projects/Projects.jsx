@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./Projects.css";
 
@@ -44,7 +44,6 @@ export default function Projects({ lang }) {
     "React",
     "NestJS",
     "Supabase",
-    "PostgreSQL",
     "Facial Recognition",
     "OCR",
     "Render",
@@ -122,7 +121,7 @@ export default function Projects({ lang }) {
         en: "BusTicket App",
         es: "App de Pasajes de Bus"
       },
-      tools: ["React Native", "Expo", "Supabase", "PostgreSQL", "OCR Technology"],
+      tools: ["React Native", "Expo", "Supabase", "NestJS", "OCR Technology"],
       frontTools: ["React Native", "Expo", "Supabase"],
       desc: {
         en: "Mobile application for bus ticket purchasing with OCR data filling, user registration, seat selection and payment methods.",
@@ -157,6 +156,19 @@ export default function Projects({ lang }) {
       github: "https://github.com/Dalembert21/felizCumplea-os" 
     }
   ];
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (flippedCard !== null && !event.target.closest('.project-card')) {
+        setFlippedCard(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [flippedCard]);
 
   const handleFlip = (projectId, e) => {
     if (e) {
@@ -210,7 +222,7 @@ export default function Projects({ lang }) {
                   <div className="front-tools">
                     <h4>{lang === "en" ? "Technologies" : "Tecnologías"}</h4>
                     <div className="front-tools-tags">
-                      {project.frontTools.map((tool, index) => (
+                      {project.tools.map((tool, index) => (
                         <span key={index} className="front-tool-tag">{tool}</span>
                       ))}
                     </div>
@@ -225,7 +237,7 @@ export default function Projects({ lang }) {
                         className="project-btn-primary"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        🌐 {lang === "en" ? "Live Demo" : "Ver Demo"}
+                        {lang === "en" ? "Live Demo" : "Ver Demo"}
                       </a>
                     ) : (
                       <button 
@@ -233,7 +245,7 @@ export default function Projects({ lang }) {
                         style={{opacity: 0.6, cursor: "not-allowed"}}
                         disabled
                       >
-                        📱 {lang === "en" ? "Mobile App" : "App Móvil"}
+                        {lang === "en" ? "Mobile App" : "App Móvil"}
                       </button>
                     )}
                     
@@ -255,7 +267,7 @@ export default function Projects({ lang }) {
                       className="project-btn-flip"
                       onClick={(e) => handleFlip(project.id, e)}
                     >
-                      🔄 {lang === "en" ? "Details" : "Detalles"}
+                      {lang === "en" ? "Details" : "Detalles"}
                     </button>
                   </div>
                 </div>
