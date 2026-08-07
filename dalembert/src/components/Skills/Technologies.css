@@ -33,8 +33,9 @@
 }
 
 .technologies-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.2rem;
   margin-top: 2rem;
 }
@@ -45,7 +46,8 @@
   padding: 1.2rem 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-height: 8rem;
+  width: 8rem;
+  height: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,13 +86,22 @@
 }
 
 
-.tool-icon[src*="penpot"],
 .tool-icon[src*="android-studio"],
 .tool-icon[src*="server"],
 .tool-icon[src*="adobe-xd"] {
   width: 3rem !important;
   height: 3rem !important;
   margin-bottom: 0.7rem;
+}
+
+.tool-icon[src*="penpot"] {
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  margin-bottom: 0.7rem;
+  background-color: white;
+  border-radius: 50%;
+  padding: 0.4rem;
+  box-sizing: border-box;
 }
 
 .tech-card:hover .tool-icon {
@@ -148,7 +159,6 @@
 /* Mejorar visibilidad en tema claro */
 .light .tech-card {
   border: 2px solid rgba(0, 0, 0, 0.1);
-  background: linear-gradient(145deg, #ffffff, #f8fafc);
 }
 
 .light .tech-card:hover {
@@ -159,12 +169,16 @@
   background: linear-gradient(145deg, var(--accent), #0284c7);
 }
 
+.light .tool-icon[src*="penpot"] {
+  background-color: transparent;
+}
+
 /* Responsive general */
 @media (max-width: 64rem) {
   .technologies-categories {
     gap: 0.6rem;
   }
-  
+
   .category-btn {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
@@ -173,21 +187,21 @@
 
 @media (max-width: 48rem) {
   .technologies-grid {
-    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
     gap: 1rem;
   }
-  
+
   .tech-card {
-    min-height: 7rem;
+    width: 7rem;
+    height: 7rem;
     padding: 1rem 0.5rem;
   }
-  
+
   .tool-icon {
     width: 2.5rem;
     height: 2.5rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .tech-card h3 {
     font-size: 0.8rem;
   }
@@ -195,7 +209,7 @@
   .technologies-categories {
     gap: 0.4rem;
   }
-  
+
   .category-btn {
     padding: 0.5rem 0.8rem;
     font-size: 0.8rem;
@@ -204,15 +218,15 @@
 
 @media (max-width: 30rem) {
   .technologies-grid {
-    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
     gap: 0.8rem;
   }
-  
+
   .tech-card {
-    min-height: 6rem;
+    width: 6rem;
+    height: 6rem;
     padding: 0.8rem 0.4rem;
   }
-  
+
   .tool-icon {
     width: 2rem;
     height: 2rem;
@@ -221,7 +235,7 @@
   .technologies-categories {
     gap: 0.3rem;
   }
-  
+
   .category-btn {
     padding: 0.4rem 0.6rem;
     font-size: 0.75rem;
