@@ -23,11 +23,61 @@ export default function CustomCursor() {
       const ctx = canvas.getContext("2d");
       ctx.drawImage(img, 0, 0);
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const width = canvas.width;
+      const height = canvas.height;
       const data = imageData.data;
-      for (let i = 0; i < data.length; i += 4) {
-        // Si el píxel es oscuro (fondo negro o casi negro)
-        if (data[i] < 35 && data[i+1] < 35 && data[i+2] < 35) {
-          data[i+3] = 0; // Hacerlo transparente
+      
+      // Función auxiliar para obtener el índice del píxel
+      const getIndex = (x, y) => (y * width + x) * 4;
+      
+      // Obtenemos el color exacto de la esquina superior izquierda (el fondo real)
+      const bgR = data[0];
+      const bgG = data[1];
+      const bgB = data[2];
+
+      // Función para comprobar si un píxel es del fondo (tolerancia muy estricta para no borrar el cabello)
+      const isDark = (x, y) => {
+        const i = getIndex(x, y);
+        return Math.abs(data[i] - bgR) < 10 && 
+               Math.abs(data[i+1] - bgG) < 10 && 
+               Math.abs(data[i+2] - bgB) < 10 && 
+               data[i+3] > 0;
+      };
+
+      // Flood fill (BFS) para eliminar solo el fondo oscuro conectado a los bordes
+      const queue = [];
+      
+      // Empezar desde la esquina superior izquierda
+      if (isDark(0, 0)) {
+        queue.push([0, 0]);
+        const startIdx = getIndex(0, 0);
+        data[startIdx + 3] = 0; // Marcar como visitado/transparente
+      }
+      
+      // Puedes añadir otras esquinas si el fondo no está conectado completamente
+      const corners = [[width-1, 0], [0, height-1], [width-1, height-1]];
+      corners.forEach(([cx, cy]) => {
+        if (isDark(cx, cy)) {
+          queue.push([cx, cy]);
+          data[getIndex(cx, cy) + 3] = 0;
+        }
+      });
+
+      let head = 0;
+      while (head < queue.length) {
+        const [x, y] = queue[head++];
+        
+        // Direcciones: arriba, abajo, izquierda, derecha
+        const dirs = [[0, -1], [0, 1], [-1, 0], [1, 0]];
+        for (const [dx, dy] of dirs) {
+          const nx = x + dx;
+          const ny = y + dy;
+          if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
+            if (isDark(nx, ny)) {
+              data[getIndex(nx, ny) + 3] = 0; // Hacer transparente
+              queue.push([nx, ny]);
+            }
+          }
         }
       }
       ctx.putImageData(imageData, 0, 0);

@@ -108,6 +108,11 @@ body.light .snitch-cursor.scrolling .wing {
   /* Ya no necesitamos mix-blend-mode porque usamos Canvas para la transparencia */
 }
 
+/* En modo claro, Harry tiene líneas blancas que se pierden, así que le ponemos una sombra oscura */
+body.light .harry-chaser {
+  filter: drop-shadow(0px 0px 1.5px black) drop-shadow(0px 0px 1.5px black);
+}
+
 @keyframes run-bob {
   0% { transform: translateY(0px); }
   100% { transform: translateY(8px); }
