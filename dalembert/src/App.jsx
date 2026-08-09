@@ -26,12 +26,14 @@ function App() {
         lang={lang}
         darkMode={darkMode}
       />
-      <Hero lang={lang} />
-       <Skills lang={lang} />
-      <Projects lang={lang} />
-      <About lang={lang} />
-     < Complements lang={lang} />
-      <Contact lang={lang} />
+      <main>
+        <Hero lang={lang} />
+        <Skills lang={lang} />
+        <Projects lang={lang} />
+        <About lang={lang} />
+        <Complements lang={lang} />
+        <Contact lang={lang} />
+      </main>
     </div>
   );
 }
