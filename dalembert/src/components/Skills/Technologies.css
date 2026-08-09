@@ -27,7 +27,7 @@
 .category-btn.active,
 .category-btn:hover {
   background: var(--accent);
-  color: white;
+  color: var(--btn-text);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }

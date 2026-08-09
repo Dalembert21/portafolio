@@ -38,6 +38,7 @@ h2 {
   --card-dark: #262626;
   --accent: #38bdf8;
   --accent-blue: #60a5fa;
+  --btn-text: #0a0a0a;
 }
 
 
@@ -48,6 +49,7 @@ h2 {
   --card-dark: #f1f5f9;
   --accent: #0284c7;
   --accent-blue: #2563eb;
+  --btn-text: #ffffff;
 }
 
 .dark, .light {
