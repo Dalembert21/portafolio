@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Contact.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaRegEnvelope, FaCopy, FaCheckCircle } from "react-icons/fa";
+import { FaRegEnvelope, FaCopy, FaCheckCircle, FaLinkedin, FaGithub } from "react-icons/fa";
 
 export default function Contact({ lang }) {
   const [showToast, setShowToast] = useState(false);
@@ -76,6 +76,15 @@ export default function Contact({ lang }) {
             <FaCopy className="pulse-icon" />
             {lang === "en" ? "Copy Email" : "Copiar Correo"}
           </button>
+        </div>
+
+        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginTop: '2rem' }}>
+          <a href="https://www.linkedin.com/in/dalembert-bravo-583076216/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-color)', fontSize: '2rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'var(--text-color)'} aria-label="LinkedIn">
+            <FaLinkedin />
+          </a>
+          <a href="https://github.com/Dalembert21" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-color)', fontSize: '2rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'var(--text-color)'} aria-label="GitHub">
+            <FaGithub />
+          </a>
         </div>
       </motion.div>
       

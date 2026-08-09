@@ -15,7 +15,7 @@ export default function Hero({ lang }) {
     es: {
       hi: " Hola, soy",
       name: "Dalembert Bravo",
-      role: "Desarrollador Full-Stack",
+      role: "Desarrollador Full-Stack & Programador de Software",
       desc: "Ingeniando soluciones digitales robustas que conectan sistemas backend complejos con experiencias frontend intuitivas.",
       downloadCV: "Descargar CV",
       viewGithub: "Ver GitHub"
@@ -31,13 +31,13 @@ export default function Hero({ lang }) {
       >
         {text[lang].hi} <span className="accent">{text[lang].name}</span>
       </motion.h1>
-      <motion.h3
+      <motion.h2
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
         {text[lang].role}
-      </motion.h3>
+      </motion.h2>
       <p>{text[lang].desc}</p>
       
       {/* Botones de acción */}
