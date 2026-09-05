@@ -8,11 +8,32 @@ import lionproduccionesImage from "../../assets/lionProducciones.png";
 import busappImage from "../../assets/chasQuiBus.png";
 import birthdayImage from "../../assets/cumple3.png";
 import financieroImage from "../../assets/fi1.png";
+import cargaLitoImage from "../../assets/cargaLito.png";
 
 export default function Projects({ lang }) {
   const [flippedCard, setFlippedCard] = useState(null);
 
   const projects = [
+    {
+      id: 6,
+      title: {
+        en: "CargaLitos EC",
+        es: "CargaLitos EC"
+      },
+      tools: ["React", "Tailwind CSS", "NestJS", "Supabase", "Map APIs"],
+      frontTools: ["React", "Tailwind", "Map APIs", "Supabase"],
+      desc: {
+        en: "Web application to find the nearest charging stations for hybrid and electric vehicles, and calculate estimated route consumption.",
+        es: "Aplicativo web para encontrar los lugares más cercanos donde cargar carros híbridos y eléctricos, y calcular el estimado de consumo en rutas."
+      },
+      image: cargaLitoImage,
+      link: "https://cargalitos-app.netlify.app/",
+      features: {
+        en: ["Charging station locator", "Route consumption estimation", "Map APIs integration", "Hybrid and electric cars support"],
+        es: ["Localizador de estaciones de carga", "Estimación de consumo en ruta", "Integración de Map APIs", "Soporte para autos híbridos y eléctricos"]
+      },
+      github: "https://github.com/Dalembert21"
+    },
     {
       id: 1,
       title: {
