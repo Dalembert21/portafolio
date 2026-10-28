@@ -96,6 +96,26 @@ export default function Projects({ lang }) {
 
     },
     {
+      id: 3,
+      title: {
+        en: "Lion Producciones",
+        es: "Lion Producciones"
+      },
+      tools: ["React", "CSS3", "Responsive Design"],
+      frontTools: ["React", "CSS3", "Responsive"],
+      desc: {
+        en: "Photography and video production company portfolio showcasing their work and services.",
+        es: "Portafolio de empresa de fotografía y producción de video mostrando sus trabajos y servicios."
+      },
+      image: lionproduccionesImage,
+      link: "https://lionproducciones.dalpasoft.tech/",
+      features: {
+        en: ["Portfolio gallery", "Services display", "Contact information", "Responsive design", "Modern UI"],
+        es: ["Galería de portafolio", "Exhibición de servicios", "Información de contacto", "Diseño responsive", "UI moderna"]
+      },
+      github: "https://github.com/Dalembert21/lionProducciones"
+    },
+    {
       id: 1,
       title: {
         en: "UTA-Drive - Vehicle Rental",
@@ -116,26 +136,6 @@ export default function Projects({ lang }) {
       github: "https://github.com/Dalembert21/utaDrive"
     },
 
-    {
-      id: 3,
-      title: {
-        en: "Lion Producciones",
-        es: "Lion Producciones"
-      },
-      tools: ["React", "CSS3", "Responsive Design"],
-      frontTools: ["React", "CSS3", "Responsive"],
-      desc: {
-        en: "Photography and video production company portfolio showcasing their work and services.",
-        es: "Portafolio de empresa de fotografía y producción de video mostrando sus trabajos y servicios."
-      },
-      image: lionproduccionesImage,
-      link: "https://lion-producciones.vercel.app/",
-      features: {
-        en: ["Portfolio gallery", "Services display", "Contact information", "Responsive design", "Modern UI"],
-        es: ["Galería de portafolio", "Exhibición de servicios", "Información de contacto", "Diseño responsive", "UI moderna"]
-      },
-      github: "https://github.com/Dalembert21/lionProducciones"
-    },
     {
       id: 4,
       title: {
