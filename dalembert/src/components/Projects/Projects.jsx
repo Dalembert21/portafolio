@@ -35,27 +35,6 @@ export default function Projects({ lang }) {
       github: "https://github.com/Dalembert21"
     },
     {
-      id: 1,
-      title: {
-        en: "UTA-Drive - Vehicle Rental",
-        es: "UTA-Drive - Alquiler de Vehículos"
-      },
-      tools: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-      frontTools: ["HTML", "CSS", "JS", "PHP", "MySQL"],
-      desc: {
-        en: "Complete vehicle rental platform with user registration, login system and reservation management.",
-        es: "Plataforma completa de alquiler de vehículos con registro de usuarios, sistema de login y gestión de reservas."
-      },
-      image: utadriveImage,
-      link: "https://utadrive.free.nf/",
-      features: {
-        en: ["User registration", "Login system", "Vehicle catalog", "Online reservations", "Admin panel"],
-        es: ["Registro de usuarios", "Sistema de login", "Catálogo de vehículos", "Reservas online", "Panel administrativo"]
-      },
-      github: "https://github.com/Dalembert21/utaDrive"
-    },
-
-    {
       id: 2,
       title: {
         en: "Credit Simulation System",
@@ -116,6 +95,27 @@ export default function Projects({ lang }) {
       github: "https://github.com/Dalembert21/sistemaAmortizacionFrontend"
 
     },
+    {
+      id: 1,
+      title: {
+        en: "UTA-Drive - Vehicle Rental",
+        es: "UTA-Drive - Alquiler de Vehículos"
+      },
+      tools: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+      frontTools: ["HTML", "CSS", "JS", "PHP", "MySQL"],
+      desc: {
+        en: "Complete vehicle rental platform with user registration, login system and reservation management.",
+        es: "Plataforma completa de alquiler de vehículos con registro de usuarios, sistema de login y gestión de reservas."
+      },
+      image: utadriveImage,
+      link: "https://utadrive.free.nf/",
+      features: {
+        en: ["User registration", "Login system", "Vehicle catalog", "Online reservations", "Admin panel"],
+        es: ["Registro de usuarios", "Sistema de login", "Catálogo de vehículos", "Reservas online", "Panel administrativo"]
+      },
+      github: "https://github.com/Dalembert21/utaDrive"
+    },
+
     {
       id: 3,
       title: {
