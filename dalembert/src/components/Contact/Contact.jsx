@@ -79,10 +79,10 @@ export default function Contact({ lang }) {
         </div>
 
         <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginTop: '2rem' }}>
-          <a href="https://www.linkedin.com/in/dalembert-bravo-583076216/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-color)', fontSize: '2rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'var(--text-color)'} aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/dalembert-bravo-583076216/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text)', fontSize: '2rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--accent)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text)'} aria-label="LinkedIn">
             <FaLinkedin />
           </a>
-          <a href="https://github.com/Dalembert21" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-color)', fontSize: '2rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'var(--text-color)'} aria-label="GitHub">
+          <a href="https://github.com/Dalembert21" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text)', fontSize: '2rem', transition: 'color 0.3s' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--accent)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text)'} aria-label="GitHub">
             <FaGithub />
           </a>
         </div>

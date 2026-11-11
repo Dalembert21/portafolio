@@ -1,9 +1,11 @@
 .about-section {
-  max-width: 70rem;
+  max-width: 75rem;
   margin: 0 auto;
   padding: 4rem 2rem;
   width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .about-content {

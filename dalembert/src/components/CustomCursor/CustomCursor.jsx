@@ -1,120 +1,108 @@
 import React, { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
 import "./CustomCursor.css";
-import harryPixel from "../../assets/harry_pixel.png";
+import { loadHarrySprite } from "../../utils/harrySprite";
+
+const SNITCH_SIZE = 25;
+const HARRY_HEIGHT = 92;
+const VIEWPORT_PADDING = 12;
+const HARRY_MAX_SPEED = 260; // px/s capped so speed is consistent across any screen size & Hz
+const HARRY_STOP_DISTANCE = 46;
+
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const [harryDirection, setHarryDirection] = useState(1);
-  const [harrySrc, setHarrySrc] = useState(harryPixel);
-  const prevX = useRef(0);
+  const [harryData, setHarryData] = useState(null);
+
+  const snitchRef = useRef(null);
+  const harryRef = useRef(null);
+
+  const isVisibleRef = useRef(false);
+  const hasInitializedRef = useRef(false);
+  const harryDirRef = useRef(1);
+  const harryDimsRef = useRef({ width: 55, height: HARRY_HEIGHT });
+
+  const targetPosRef = useRef({ x: 0, y: 0 });
+  const snitchPosRef = useRef({ x: 0, y: 0 });
+  const harryPosRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    // Eliminar el fondo negro de la imagen generada usando Canvas
-    const img = new Image();
-    img.src = harryPixel;
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0);
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const width = canvas.width;
-      const height = canvas.height;
-      const data = imageData.data;
-      
-      // Función auxiliar para obtener el índice del píxel
-      const getIndex = (x, y) => (y * width + x) * 4;
-      
-      // Obtenemos el color exacto de la esquina superior izquierda (el fondo real)
-      const bgR = data[0];
-      const bgG = data[1];
-      const bgB = data[2];
-
-      // Función para comprobar si un píxel es del fondo (tolerancia muy estricta para no borrar el cabello)
-      const isDark = (x, y) => {
-        const i = getIndex(x, y);
-        return Math.abs(data[i] - bgR) < 10 && 
-               Math.abs(data[i+1] - bgG) < 10 && 
-               Math.abs(data[i+2] - bgB) < 10 && 
-               data[i+3] > 0;
-      };
-
-      // Flood fill (BFS) para eliminar solo el fondo oscuro conectado a los bordes
-      const queue = [];
-      
-      // Empezar desde la esquina superior izquierda
-      if (isDark(0, 0)) {
-        queue.push([0, 0]);
-        const startIdx = getIndex(0, 0);
-        data[startIdx + 3] = 0; // Marcar como visitado/transparente
-      }
-      
-      // Puedes añadir otras esquinas si el fondo no está conectado completamente
-      const corners = [[width-1, 0], [0, height-1], [width-1, height-1]];
-      corners.forEach(([cx, cy]) => {
-        if (isDark(cx, cy)) {
-          queue.push([cx, cy]);
-          data[getIndex(cx, cy) + 3] = 0;
-        }
+    let isCancelled = false;
+    loadHarrySprite().then(({ src, ratio }) => {
+      if (isCancelled) return;
+      const renderedWidth = Math.round(HARRY_HEIGHT * ratio);
+      harryDimsRef.current = { width: renderedWidth, height: HARRY_HEIGHT };
+      setHarryData({
+        src,
+        width: renderedWidth,
+        height: HARRY_HEIGHT,
       });
+    });
 
-      let head = 0;
-      while (head < queue.length) {
-        const [x, y] = queue[head++];
-        
-        // Direcciones: arriba, abajo, izquierda, derecha
-        const dirs = [[0, -1], [0, 1], [-1, 0], [1, 0]];
-        for (const [dx, dy] of dirs) {
-          const nx = x + dx;
-          const ny = y + dy;
-          if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
-            if (isDark(nx, ny)) {
-              data[getIndex(nx, ny) + 3] = 0; // Hacer transparente
-              queue.push([nx, ny]);
-            }
-          }
-        }
-      }
-      ctx.putImageData(imageData, 0, 0);
-      setHarrySrc(canvas.toDataURL());
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.add("custom-cursor-active");
+    return () => {
+      document.body.classList.remove("custom-cursor-active");
     };
   }, []);
 
   useEffect(() => {
     let scrollTimeout;
+    let rafId;
+    let lastTime = performance.now();
+
+    const getClampedHarryBounds = () => {
+      const { width: harryW, height: harryH } = harryDimsRef.current;
+      const vw = document.documentElement.clientWidth || window.innerWidth;
+      const vh = document.documentElement.clientHeight || window.innerHeight;
+      return {
+        minX: VIEWPORT_PADDING,
+        maxX: Math.max(VIEWPORT_PADDING, vw - harryW - VIEWPORT_PADDING),
+        minY: VIEWPORT_PADDING,
+        maxY: Math.max(VIEWPORT_PADDING, vh - harryH - VIEWPORT_PADDING),
+        harryW,
+        harryH,
+        vw,
+        vh,
+      };
+    };
 
     const updateMousePosition = (e) => {
-      if (e.clientX > prevX.current) {
-        setHarryDirection(1); // Moviéndose a la derecha
-      } else if (e.clientX < prevX.current) {
-        setHarryDirection(-1); // Moviéndose a la izquierda
+      if (e.pointerType === "touch") return;
+
+      targetPosRef.current = { x: e.clientX, y: e.clientY };
+
+      if (!hasInitializedRef.current) {
+        hasInitializedRef.current = true;
+        const bounds = getClampedHarryBounds();
+        const snitchX = clamp(e.clientX - SNITCH_SIZE / 2, 0, Math.max(0, bounds.vw - SNITCH_SIZE));
+        const snitchY = clamp(e.clientY - SNITCH_SIZE / 2, 0, Math.max(0, bounds.vh - SNITCH_SIZE));
+        snitchPosRef.current = { x: snitchX, y: snitchY };
+
+        harryPosRef.current = {
+          x: clamp(e.clientX - bounds.harryW - 24, bounds.minX, bounds.maxX),
+          y: clamp(e.clientY - bounds.harryH / 2, bounds.minY, bounds.maxY),
+        };
       }
-      prevX.current = e.clientX;
 
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      if (!isVisible) setIsVisible(true);
-    };
-
-    const handleMouseOver = (e) => {
-      if (
-        e.target.tagName.toLowerCase() === 'a' || 
-        e.target.tagName.toLowerCase() === 'button' || 
-        e.target.closest('a') || 
-        e.target.closest('button') ||
-        e.target.classList.contains('flip-card')
-      ) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
+      if (!isVisibleRef.current) {
+        isVisibleRef.current = true;
+        setIsVisible(true);
       }
     };
 
-    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseLeave = () => {
+      isVisibleRef.current = false;
+      hasInitializedRef.current = false;
+      setIsVisible(false);
+    };
 
     const handleScroll = () => {
       setIsScrolling(true);
@@ -124,71 +112,124 @@ export default function CustomCursor() {
       }, 150);
     };
 
-    window.addEventListener("mousemove", updateMousePosition);
-    window.addEventListener("mouseover", handleMouseOver);
-    window.addEventListener("scroll", handleScroll, true); // true for capturing inner scrolls
-    document.body.addEventListener("mouseleave", handleMouseLeave);
+    const tick = (now) => {
+      const dt = Math.min((now - lastTime) / 1000, 0.05);
+      lastTime = now;
+
+      if (isVisibleRef.current) {
+        const bounds = getClampedHarryBounds();
+
+        // Snitch sigue el puntero con respuesta rápida y suave, sin salir de la pantalla
+        const snitchTargetX = clamp(
+          targetPosRef.current.x - SNITCH_SIZE / 2,
+          0,
+          Math.max(0, bounds.vw - SNITCH_SIZE)
+        );
+        const snitchTargetY = clamp(
+          targetPosRef.current.y - SNITCH_SIZE / 2,
+          0,
+          Math.max(0, bounds.vh - SNITCH_SIZE)
+        );
+        const snitchAlpha = 1 - Math.exp(-28 * dt);
+        snitchPosRef.current.x += (snitchTargetX - snitchPosRef.current.x) * snitchAlpha;
+        snitchPosRef.current.y += (snitchTargetY - snitchPosRef.current.y) * snitchAlpha;
+
+        if (snitchRef.current) {
+          snitchRef.current.style.transform = `translate3d(${snitchPosRef.current.x}px, ${snitchPosRef.current.y}px, 0)`;
+        }
+
+        // Harry persigue la Snitch a velocidad máxima constante (independiente de tamaño de pantalla o Hz)
+        const harryCenterX = harryPosRef.current.x + bounds.harryW / 2;
+        const harryCenterY = harryPosRef.current.y + bounds.harryH / 2;
+        const snitchCenterX = snitchPosRef.current.x + SNITCH_SIZE / 2;
+        const snitchCenterY = snitchPosRef.current.y + SNITCH_SIZE / 2;
+
+        const dx = snitchCenterX - harryCenterX;
+        const dy = snitchCenterY - harryCenterY;
+        const dist = Math.hypot(dx, dy);
+
+        if (dist > HARRY_STOP_DISTANCE) {
+          const remaining = dist - HARRY_STOP_DISTANCE;
+          const speed = Math.min(HARRY_MAX_SPEED, remaining * 3.0);
+          const step = Math.min(remaining, speed * dt);
+
+          harryPosRef.current.x += (dx / dist) * step;
+          harryPosRef.current.y += (dy / dist) * step;
+
+          if (Math.abs(dx) > 6) {
+            const nextDir = dx > 0 ? 1 : -1;
+            if (nextDir !== harryDirRef.current) {
+              harryDirRef.current = nextDir;
+              setHarryDirection(nextDir);
+            }
+          }
+        }
+
+        // Mantener a Harry siempre dentro de los límites visibles de la pantalla
+        harryPosRef.current.x = clamp(harryPosRef.current.x, bounds.minX, bounds.maxX);
+        harryPosRef.current.y = clamp(harryPosRef.current.y, bounds.minY, bounds.maxY);
+
+        if (harryRef.current) {
+          harryRef.current.style.transform = `translate3d(${harryPosRef.current.x}px, ${harryPosRef.current.y}px, 0)`;
+        }
+      }
+
+      rafId = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("pointermove", updateMousePosition, { passive: true });
+    window.addEventListener("scroll", handleScroll, true);
+    window.addEventListener("blur", handleMouseLeave);
+    document.documentElement.addEventListener("mouseleave", handleMouseLeave);
+
+    rafId = requestAnimationFrame(tick);
 
     return () => {
-      window.removeEventListener("mousemove", updateMousePosition);
-      window.removeEventListener("mouseover", handleMouseOver);
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("pointermove", updateMousePosition);
       window.removeEventListener("scroll", handleScroll, true);
-      document.body.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("blur", handleMouseLeave);
+      document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
       clearTimeout(scrollTimeout);
     };
-  }, [isVisible]);
+  }, []);
 
   if (!isVisible) return null;
 
   return (
     <>
-      <motion.div
+      <div
+        ref={snitchRef}
         className={`snitch-cursor ${isScrolling ? "scrolling" : ""}`}
-        animate={{
-          x: mousePosition.x - 10,
-          y: mousePosition.y - 10,
-          scale: 1,
-          rotate: isScrolling ? 25 : 0
-        }}
-        transition={{ 
-          type: "spring", 
-          stiffness: 150, 
-          damping: 15, 
-          mass: 0.2 
-        }}
         style={{
-          width: 25,
-          height: 25
+          transform: `translate3d(${snitchPosRef.current.x}px, ${snitchPosRef.current.y}px, 0)`,
         }}
       >
         <div className="snitch-body">
           <div className="wing left-wing"></div>
           <div className="wing right-wing"></div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Harry Chasing the Snitch */}
-      <motion.div
-        className="harry-chaser-container"
-        animate={{
-          x: mousePosition.x - 40, // Offset so he's slightly behind/center
-          y: mousePosition.y - 80  // Offset so he is positioned correctly relative to cursor
-        }}
-        transition={{ 
-          type: "spring", 
-          stiffness: 10, // Very low stiffness = slow
-          damping: 8,   // Low damping = loose
-          mass: 3       // High mass = slow start and stop
-        }}
-      >
-        <div style={{ transform: `scaleX(${harryDirection})`, transformOrigin: "center" }}>
-          <img 
-            src={harrySrc} 
-            alt="Harry Chaser" 
-            className="harry-chaser" 
-          />
+      {harryData && (
+        <div
+          ref={harryRef}
+          className="harry-chaser-container"
+          style={{
+            width: harryData.width,
+            height: harryData.height,
+            transform: `translate3d(${harryPosRef.current.x}px, ${harryPosRef.current.y}px, 0)`,
+          }}
+        >
+          <div style={{ transform: `scaleX(${harryDirection})`, transformOrigin: "center" }}>
+            <img
+              src={harryData.src}
+              alt="Harry Chaser"
+              className="harry-chaser"
+            />
+          </div>
         </div>
-      </motion.div>
+      )}
     </>
   );
 }
