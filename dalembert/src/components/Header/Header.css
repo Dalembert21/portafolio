@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
   padding: 1.2rem 2rem;
   position: fixed;
   top: 0;
@@ -257,6 +259,6 @@ body {
 /* Extra: Para pantallas muy grandes */
 @media (min-width: 1200px) {
   .header-container {
-    padding: 1.2rem 3rem; /* Más padding en pantallas grandes */
+    padding: 1.2rem max(3rem, calc((100% - 75rem) / 2)); /* Alineado al contenido en pantallas grandes */
   }
 }
