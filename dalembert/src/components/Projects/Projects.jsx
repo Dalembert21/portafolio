@@ -63,7 +63,7 @@ export default function Projects({ lang }) {
         es: "Plataforma de simulación de créditos para bancos del Ecuador con validación biométrica de identidad, configuraciones personalizables por institución, gestión de asesores y panel administrativo responsive."
       },
       image: financieroImage,
-      link: "https://sistemafinancierodb.netlify.app/dashboard",
+      link: "https://financiero.dalpasoft.tech/dashboard",
       features: {
         en: [
           "Credit simulation system",
